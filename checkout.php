@@ -21,10 +21,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validar e salvar informações do pedido na tabela `orders`
 
     // Exemplo simples: inserção de um pedido de teste
-    $user_id = $_SESSION['user_id']; // Supondo que você tenha o ID do usuário na sessão
+    $username = $_SESSION['username']; // Supondo que você tenha o ID do usuário na sessão
     $total_amount = $_SESSION['total_amount']; // Supondo que você tenha o total do carrinho na sessão
 
-    $sql = "INSERT INTO orders (user_id, total_amount, status) VALUES ($user_id, $total_amount, 'pending')";
+    $sql = "INSERT INTO orders (username, total_amount, status) VALUES ($username, $total_amount, 'pending')";
     if ($conn->query($sql) === TRUE) {
         $order_id = $conn->insert_id;
 
