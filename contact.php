@@ -26,7 +26,7 @@
   <section class="contact_section layout_padding">
     <div class="container">
         <div class="heading_container heading_center">
-            <h2>Get In Touch</h2>
+        <h2>Entre em Contato Connosco</h2>
         </div>
         <div class="row">
             <div class="col-md-8 col-lg-6 mx-auto">
