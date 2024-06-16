@@ -323,11 +323,11 @@
               </a>
               <a class="" href="price.html">
                 <img src="assets/images/nav-bullet.png" alt="">
-                Pricing
+                Preços
               </a>
               <a class="" href="contact.html">
                 <img src="assets/images/nav-bullet.png" alt="">
-                Contact Us
+                Contactos
               </a>
             </div>
           </div>
@@ -338,8 +338,7 @@
               Info
             </h4>
             <p>
-              necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin
-              words, combined with a handful
+            A InnovaWall é uma rede de distribuição de informação que permite fornecer conteúdo Web projetada para proteger redes com uma solução de mitigação automatizada de última geração desenvolvida internamente que visa ser segura, privada, rápida e confiável, com o objetivo de proteger serviços contra qualquer ataque cibernético.
             </p>
           </div>
         </div>
