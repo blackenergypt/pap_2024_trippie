@@ -27,7 +27,7 @@
     <div class="container">
       <div class="heading_container heading_center">
         <h2>
-          Our Services
+        As nossas soluções de cibersegurança
         </h2>
       </div>
     </div>
@@ -40,10 +40,10 @@
             </div>
             <div class="detail-box">
               <h4>
-                Shared Hosting
+              Deep Packet Inspection
               </h4>
               <p>
-                Generators on the Internet tend to repeat predefined chunks as necessary
+              Bloquear ataques cibernéticos ao simplesmente analisar os pacotes dos mesmos, sem a necessidade de interações humanas.
               </p>
               <a href="">
                 Read More
@@ -60,10 +60,10 @@
             </div>
             <div class="detail-box">
               <h4>
-                Dedicated Hosting
+              InnovaWall DataBase
               </h4>
               <p>
-                Generators on the Internet tend to repeat predefined chunks as necessary
+              Uma base de dados, que contem dados coletados pela equipa da InnovaWall de padrões e comportamentos de ataques captados por nós e a origem dos mesmos
               </p>
               <a href="">
                 Read More
@@ -80,10 +80,10 @@
             </div>
             <div class="detail-box">
               <h4>
-                Cloud Hosting
+              Sensor Mode
               </h4>
               <p>
-                Generators on the Internet tend to repeat predefined chunks as necessary
+              Os sensores da InnovaWall estão sempre à procura de ataques que possam tentar interromper a disponibilidade do seu website. Toda a detenção é realizada em menos de meio segundo, em média. Pronto para proteger o seu website!
               </p>
               <a href="">
                 Read More
@@ -100,10 +100,10 @@
             </div>
             <div class="detail-box">
               <h4>
-                VPS Hosting
+              Managed Challenge
               </h4>
               <p>
-                Generators on the Internet tend to repeat predefined chunks as necessary
+              Um desafio de interação humana, usado em caso de emergência ou em caso de muitos pedidos por segundo a 'dar a volta' às nossas primeiras camadas.
               </p>
               <a href="">
                 Read More
@@ -120,10 +120,10 @@
             </div>
             <div class="detail-box">
               <h4>
-                Wordpress Hosting
+              Bot Detection
               </h4>
               <p>
-                Generators on the Internet tend to repeat predefined chunks as necessary
+              Capacidade de detectar robôs em tempo real sem a necessidade de desafios ou qualquer tipo de software com interação humana.
               </p>
               <a href="">
                 Read More
@@ -140,10 +140,10 @@
             </div>
             <div class="detail-box">
               <h4>
-                Domain Name
+              Manipulation Detection
               </h4>
               <p>
-                Generators on the Internet tend to repeat predefined chunks as necessary
+              Detectar robôs ou humanos que estejam a mentir sobre os seus recursos ou hardware, ou a tentar manipular as suas informações.
               </p>
               <a href="">
                 Read More

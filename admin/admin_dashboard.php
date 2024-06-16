@@ -6,10 +6,7 @@ if (!isset($_SESSION['admin_username'])) {
     exit();
 }
 
-$servername = "192.168.100.105";
-$username = "dev_root";
-$password = "as123as321";
-$dbname = "user_registration";
+require '../config.php';
 
 // Criar conexão
 $conn = new mysqli($servername, $username, $password, $dbname);

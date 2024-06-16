@@ -13,7 +13,18 @@
   <title>InnovaWall</title>
 
   <?php include 'includes/head.php';?>
+  <style>
 
+    .input_container{
+    display: flex;
+    align-items: center;   } 
+    .input_container i{
+      margin-top: -2%; 
+      margin-bottom: 10px;
+      margin-right: 10px;
+    }
+
+  </style>
 </head>
 
 <body class="sub_page">
@@ -26,26 +37,34 @@
   <section class="contact_section layout_padding">
     <div class="container">
         <div class="heading_container heading_center">
-        <h2>Entre em Contato Connosco</h2>
+            <h2>Entre em Contato Connosco</h2>
         </div>
         <div class="row">
             <div class="col-md-8 col-lg-6 mx-auto">
                 <div class="form_container">
                     <form id="contactForm" method="post">
-                        <div>
-                            <input type="text" name="name" id="name" placeholder="Your Name" required>
+                        <div class="input_container">
+                            <i class="fas fa-user"></i>
+                            <input type="text" name="nome" placeholder="Nome" required />
                         </div>
-                        <div>
-                            <input type="email" name="email" id="email" placeholder="Your Email" required>
+                        <div class="input_container">
+                            <i class="fas fa-user"></i>
+                            <input type="text" name="apelido" placeholder="Apelido" required />
                         </div>
-                        <div>
-                            <input type="text" name="phone" id="phone" placeholder="Your Phone" required>
+                        <div class="input_container">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" name="email" placeholder="Email" required />
                         </div>
-                        <div>
-                            <textarea name="message" id="message" class="message-box" placeholder="Message" required></textarea>
+                        <div class="input_container">
+                            <i class="fas fa-phone"></i>
+                            <input type="text" name="telefone" placeholder="Número de Telefone" required />
+                        </div>
+                        <div class="input_container">
+                            <i class="fas fa-comment"></i>
+                            <input name="mensagem" class="message-box" placeholder="Mensagem" required>
                         </div>
                         <div class="btn_box">
-                            <button type="submit">SEND</button>
+                            <button type="submit">Enviar mensagem</button>
                         </div>
                     </form>
                 </div>
@@ -53,6 +72,7 @@
         </div>
     </div>
 </section>
+
  
   <section class="info_section layout_padding2">
     <div class="container">
@@ -154,50 +174,49 @@
 
   <?php include 'includes/footer.php';?>
   <?php include 'includes/scripts.php';?>
-<!-- Script para processar o envio via AJAX -->
 <script>
-$(document).ready(function() {
-    $('#contactForm').submit(function(e) {
-        e.preventDefault(); // Evita o envio padrão do formulário
-
-        // Obtém os dados do formulário
-        var formData = $(this).serialize();
-
-        // Envia os dados via AJAX
-        $.ajax({
-            type: 'POST',
-            url: 'process_contact.php', // Arquivo PHP para processamento
-            data: formData,
-            dataType: 'json',
-            success: function(response) {
-                if (response.success) {
-                    alert('Mensagem enviada com sucesso!');
-                    $('#contactForm')[0].reset(); // Limpa o formulário
-                    // Atualiza a tabela de contatos
-                    fetchContacts();
-                } else {
+    $(document).ready(function() {
+        // Manipula o envio do formulário de contato
+        $('#contactForm').submit(function(e) {
+            e.preventDefault(); // Evita o envio padrão do formulário
+            
+            // Obtém os dados do formulário
+            var formData = $(this).serialize();
+            
+            // Envia os dados via AJAX para processamento
+            $.ajax({
+                type: 'POST',
+                url: 'process_contact.php',
+                data: formData,
+                dataType: 'json',
+                success: function(response) {
+                    if (response.success) {
+                        alert('Mensagem enviada com sucesso!');
+                        $('#contactForm')[0].reset(); // Limpa o formulário após o envio
+                        fetchContacts(); // Atualiza a tabela de contatos
+                    } else {
+                        alert('Erro ao enviar mensagem. Tente novamente.');
+                    }
+                },
+                error: function() {
                     alert('Erro ao enviar mensagem. Tente novamente.');
                 }
-            },
-            error: function() {
-                alert('Erro ao enviar mensagem. Tente novamente.');
-            }
+            });
         });
+
+        // Função para buscar e atualizar a tabela de contatos
+        function fetchContacts() {
+            $.ajax({
+                url: 'fetch_contacts.php',
+                success: function(data) {
+                    $('#contactsTable').html(data); // Atualiza a tabela de contatos
+                }
+            });
+        }
+
+        // Chama a função para buscar contatos ao carregar a página
+        fetchContacts();
     });
-
-    // Função para buscar e atualizar a tabela de contatos
-    function fetchContacts() {
-        $.ajax({
-            url: 'fetch_contacts.php', // Arquivo PHP para buscar contatos
-            success: function(data) {
-                $('#contactsTable').html(data); // Atualiza a tabela de contatos
-            }
-        });
-    }
-
-    // Chama a função para buscar contatos ao carregar a página
-    fetchContacts();
-});
 </script>
 
 </body>

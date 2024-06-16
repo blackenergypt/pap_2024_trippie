@@ -7,9 +7,8 @@ if (!isset($_SESSION['username'])) {
 }
 
 echo "Bem-vindo ao painel de controle, " . $_SESSION['username'] . "!";
-
-
 ?>
+<a href="index.php">Voltar para a página inicial</a>
 <form action="logout.php" method="post">
     <input type="submit" value="Sair">
 </form>
