@@ -1,11 +1,6 @@
 <?php
-
-
-// Verifica se o usuário está logado
-if (!isset($_SESSION['username'])) {
-    header("Location: sign-in.php");
-    exit();
-}
+session_start();
+include_once 'db_connect.php';
 
 // Verifica se há itens no carrinho
 if (empty($_SESSION['cart'])) {
@@ -13,65 +8,76 @@ if (empty($_SESSION['cart'])) {
     exit();
 }
 
-// Incluir conexão com o banco de dados
-include_once 'db_connect.php';
+// Verifica se o usuário está autenticado (exemplo hipotético)
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php"); // Redireciona para a página de login
+    exit();
+}
 
-// Processar dados do formulário de checkout
+$user_id = $_SESSION['user_id'];
+
+// Processar dados do formulário de checkout quando o formulário for submetido
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Validar e salvar informações do pedido na tabela `orders`
+    // Dados do formulário de checkout
+    $fname = $_POST['fname'];
+    $lname = $_POST['lname'];
+    $email = $_POST['email'];
+    $address = $_POST['address'];
+    $city = $_POST['city'];
+    $zip = $_POST['zip'];
 
-    // Exemplo simples: inserção de um pedido de teste
-    $username = $_SESSION['username']; // Supondo que você tenha o ID do usuário na sessão
-    $total_amount = $_SESSION['total_amount']; // Supondo que você tenha o total do carrinho na sessão
+    // Calcular o total do pedido
+    $total_amount = 0;
+    foreach ($_SESSION['cart'] as $item) {
+        $total_amount += $item['price'] * $item['quantity'];
+    }
 
-    $sql = "INSERT INTO orders (username, total_amount, status) VALUES ($username, $total_amount, 'pending')";
-    if ($conn->query($sql) === TRUE) {
-        $order_id = $conn->insert_id;
+    // Inserir pedido na tabela `orders`
+    $sql_order = "INSERT INTO orders (user_id, total_amount, created_at, status) VALUES (?, ?, current_timestamp(), 'pending')";
+    $stmt_order = $conn->prepare($sql_order);
+    $stmt_order->bind_param("sd", $user_id, $total_amount);
+
+    if ($stmt_order->execute()) {
+        $order_id = $stmt_order->insert_id;
 
         // Inserir itens do pedido na tabela `order_items`
         foreach ($_SESSION['cart'] as $product_id => $item) {
             $quantity = $item['quantity'];
             $price = $item['price'];
 
-            $sql = "INSERT INTO order_items (order_id, product_id, quantity, price) VALUES ($order_id, $product_id, $quantity, $price)";
-            $conn->query($sql);
+            $sql_items = "INSERT INTO order_items (order_id, product_id, quantity, price) VALUES (?, ?, ?, ?)";
+            $stmt_items = $conn->prepare($sql_items);
+            $stmt_items->bind_param("iiid", $order_id, $product_id, $quantity, $price);
+            $stmt_items->execute();
         }
 
         // Limpar carrinho após finalizar o pedido
         unset($_SESSION['cart']);
 
-        // Redirecionar para a página de confirmação
+        // Redirecionar para a página de confirmação com o ID do pedido
         header("Location: confirmation.php?order_id=$order_id");
         exit();
     } else {
         echo "Erro ao processar o pedido: " . $conn->error;
     }
 }
-
 ?>
+
 <!DOCTYPE html>
 <html lang="pt">
-
 <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Checkout - InnovaWall</title>
 
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <meta name="keywords" content="" />
-  <meta name="description" content="" />
-  <meta name="author" content="" />
-
-  <title>Checkout - InnovaWall</title>
-
-  <?php include 'includes/head.php';?>
+    <?php include 'includes/head.php'; ?>
 </head>
-
 <body class="sub_page">
+    <div class="hero_area">
+        <?php include 'includes/header.php'; ?>
+    </div>
 
-  <div class="hero_area">
-  <?php include 'includes/header.php';?>
-
-  </div>
     <section class="checkout_section layout_padding">
         <div class="container">
             <h2>Checkout</h2>
@@ -93,8 +99,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </section>
 
-    <?php include 'includes/footer.php';?>
-  <?php include 'includes/scripts.php';?>
-    </body>
-
+    <?php include 'includes/footer.php'; ?>
+    <?php include 'includes/scripts.php'; ?>
+</body>
 </html>

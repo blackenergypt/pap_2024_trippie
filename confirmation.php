@@ -1,11 +1,4 @@
 <?php
-session_start();
-
-// Verifica se o usuário está logado
-if (!isset($_SESSION['username'])) {
-    header("Location: sign-in.php");
-    exit();
-}
 
 // Verifica se há um ID de pedido válido na URL
 if (!isset($_GET['order_id']) || !is_numeric($_GET['order_id'])) {

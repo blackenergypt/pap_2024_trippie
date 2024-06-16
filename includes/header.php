@@ -1,17 +1,13 @@
 <?php
 session_start(); // Inicia a sessão, se ainda não estiver iniciada
 
-// Verifica se o usuário não está logado e redireciona para o login
-if (!isset($_SESSION['username'])) {
-  header("Location: sign-in.php");
-  exit(); // Encerra o script para evitar que o restante do HTML seja renderizado
-}
+
 ?>
 
 <header class="header_section">
   <div class="container-fluid">
     <nav class="navbar navbar-expand-lg custom_nav-container">
-      <a class="navbar-brand" href="index.html">
+      <a class="navbar-brand" href="index.php">
         <span>InnovaWall</span>
       </a>
 

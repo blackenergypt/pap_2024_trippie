@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
 <html>
 
@@ -25,26 +22,20 @@ session_start();
     <section class="slider_section ">
       <div id="customCarousel1" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
+
           <div class="carousel-item active">
-            <div class="container ">
+            <div class="container">
               <div class="row">
                 <div class="col-md-6">
-                  <div class="detail-box">
+                  <div class="detail-box text-center">
+             
                     <h1>
-                      Fast & Secure <br>
-                      Web Hosting
+                    A Segurança que
+                    não sabias que precisavas <br>
                     </h1>
                     <p>
-                      Anything embarrassing hidden in the middle of text. All the Lorem Ipsuanything embarrassing hidden
-                      in the middle of text. All the Lorem Ipsumm </p>
-                    <div class="btn-box">
-                      <a href="" class="btn-1">
-                        Read More
-                      </a>
-                      <a href="" class="btn-2">
-                        Contact Us
-                      </a>
-                    </div>
+                    A InnovaWall é uma rede de distribuição de informação que permite fornecer conteúdo Web projetada para proteger redes com uma solução de mitigação automatizada de última geração desenvolvida internamente que visa ser segura, privada, rápida e confiável, com o objetivo de proteger serviços contra qualquer ataque cibernético. </p>
+
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -59,26 +50,19 @@ session_start();
               </div>
             </div>
           </div>
+
           <div class="carousel-item">
             <div class="container ">
               <div class="row">
                 <div class="col-md-6">
-                  <div class="detail-box">
+                  <div class="detail-box text-center">
                     <h1>
-                      Fast & Secure <br>
-                      Web Hosting
+                    A Segurança que
+                    não sabias que precisavas <br>
                     </h1>
                     <p>
-                      Anything embarrassing hidden in the middle of text. All the Lorem Ipsuanything embarrassing hidden
-                      in the middle of text. All the Lorem Ipsumm </p>
-                    <div class="btn-box">
-                      <a href="" class="btn-1">
-                        Read More
-                      </a>
-                      <a href="" class="btn-2">
-                        Contact Us
-                      </a>
-                    </div>
+                    A InnovaWall é uma rede de distribuição de informação que permite fornecer conteúdo Web projetada para proteger redes com uma solução de mitigação automatizada de última geração desenvolvida internamente que visa ser segura, privada, rápida e confiável, com o objetivo de proteger serviços contra qualquer ataque cibernético. </p>
+                    
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -93,26 +77,18 @@ session_start();
               </div>
             </div>
           </div>
+
           <div class="carousel-item">
             <div class="container ">
               <div class="row">
                 <div class="col-md-6">
-                  <div class="detail-box">
+                  <div class="detail-box text-center">
                     <h1>
-                      Fast & Secure <br>
-                      Web Hosting
+                    A Segurança que
+                    não sabias que precisavas <br>
                     </h1>
                     <p>
-                      Anything embarrassing hidden in the middle of text. All the Lorem Ipsuanything embarrassing hidden
-                      in the middle of text. All the Lorem Ipsumm </p>
-                    <div class="btn-box">
-                      <a href="" class="btn-1">
-                        Read More
-                      </a>
-                      <a href="" class="btn-2">
-                        Contact Us
-                      </a>
-                    </div>
+                    A InnovaWall é uma rede de distribuição de informação que permite fornecer conteúdo Web projetada para proteger redes com uma solução de mitigação automatizada de última geração desenvolvida internamente que visa ser segura, privada, rápida e confiável, com o objetivo de proteger serviços contra qualquer ataque cibernético. </p>
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -127,6 +103,7 @@ session_start();
               </div>
             </div>
           </div>
+
         </div>
         <div class="carousel_btn-box">
           <a class="carousel-control-prev" href="#customCarousel1" role="button" data-slide="prev">
