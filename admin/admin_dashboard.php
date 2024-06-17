@@ -73,8 +73,6 @@ require '../config.php';
     <!-- SweetAlert2 JS -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <!-- DataTables JS -->
-    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
 
     <!-- Custom Scripts -->
     <script src="js/scripts.js"></script>
