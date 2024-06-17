@@ -63,7 +63,7 @@
                                 <div class="col-md-6">
                                     <div class="detail-box text-center">
                                         <h1>
-                                            A Segurança que
+                                            A Proteção que
                                             não sabias que precisavas <br>
                                         </h1>
                                         <p>
@@ -94,7 +94,7 @@
                                 <div class="col-md-6">
                                     <div class="detail-box text-center">
                                         <h1>
-                                            A Segurança que
+                                            A Empresa que
                                             não sabias que precisavas <br>
                                         </h1>
                                         <p>
@@ -146,7 +146,7 @@
                 <div class="col-md-6 col-lg-4">
                     <div class="box ">
                         <div class="img-box">
-                            <img src="assets/images/s1.png" alt="">
+                        <i class="fa-solid fa-cube"></i>
                         </div>
                         <div class="detail-box">
                             <h4>
@@ -157,18 +157,13 @@
                                 necessidade de
                                 interações humanas.
                             </p>
-                            <a href="">
-                                Read More
-                                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-
-                            </a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <div class="box ">
                         <div class="img-box">
-                            <img src="assets/images/s2.png" alt="">
+                        <i class="fa-solid fa-database"></i>
                         </div>
                         <div class="detail-box">
                             <h4>
@@ -179,18 +174,13 @@
                                 comportamentos de
                                 ataques captados por nós e a origem dos mesmos
                             </p>
-                            <a href="">
-                                Read More
-                                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-
-                            </a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 ">
                     <div class="box ">
                         <div class="img-box">
-                            <img src="assets/images/s3.png" alt="">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
                         </div>
                         <div class="detail-box">
                             <h4>
@@ -203,18 +193,13 @@
                                 média. Pronto
                                 para proteger o seu website!
                             </p>
-                            <a href="">
-                                Read More
-                                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-
-                            </a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <div class="box ">
                         <div class="img-box">
-                            <img src="assets/images/s4.png" alt="">
+                        <i class="fa-solid fa-fingerprint"></i>
                         </div>
                         <div class="detail-box">
                             <h4>
@@ -224,18 +209,13 @@
                                 Um desafio de interação humana, usado em caso de emergência ou em caso de muitos pedidos
                                 por segundo a 'dar a volta' às nossas primeiras camadas.
                             </p>
-                            <a href="">
-                                Read More
-                                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-
-                            </a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <div class="box ">
                         <div class="img-box">
-                            <img src="assets/images/s5.png" alt="">
+                        <i class="fa-solid fa-robot"></i>
                         </div>
                         <div class="detail-box">
                             <h4>
@@ -246,18 +226,13 @@
                                 tipo de software
                                 com interação humana.
                             </p>
-                            <a href="">
-                                Read More
-                                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-
-                            </a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <div class="box ">
                         <div class="img-box">
-                            <img src="assets/images/s6.png" alt="">
+                        <i class="fa-solid fa-hat-cowboy"></i>
                         </div>
                         <div class="detail-box">
                             <h4>
@@ -268,11 +243,6 @@
                                 tentar manipular
                                 as suas informações.
                             </p>
-                            <a href="">
-                                Read More
-                                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-
-                            </a>
                         </div>
                     </div>
                 </div>

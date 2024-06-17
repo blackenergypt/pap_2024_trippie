@@ -5,3 +5,4 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
 <link href="../assets/css/style.css" rel="stylesheet">
 <link href="../assets/css/responsive.css" rel="stylesheet">
+<link rel="stylesheet" href="https://www.devcode.pt/assets/libs/fontawesome/css/all.min.css">

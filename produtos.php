@@ -48,12 +48,12 @@ require 'config.php'; // Incluir o arquivo de configuração com as credenciais 
                                 <table class="table table-bordered" id="productsTable">
                                     <thead>
                                         <tr>
+                                            <th>ID Pedido</th>
+                                            <th>Data</th>
+                                            <th>Status</th>
                                             <th>ID Produto</th>
                                             <th>Nome do Produto</th>
-                                            <th>Descrição</th>
                                             <th>Preço</th>
-                                            <th>Data da Compra</th>
-                                            <th>Estado do Produto</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -75,40 +75,36 @@ require 'config.php'; // Incluir o arquivo de configuração com as credenciais 
                                             $user = $result_user->fetch_assoc();
                                             $user_id = $user['id'];
 
-                                            // Consultar os pedidos (orders) do cliente com user_id = $user_id
-                                            $sql_orders = "SELECT * FROM orders WHERE user_id = $user_id";
-                                            $result_orders = $conn->query($sql_orders);
+                                            // Consulta SQL para buscar todos os pedidos e produtos do usuário com user_id especificado
+                                            $sql = "SELECT o.id AS order_id, u.username AS user, o.total_amount, o.created_at, o.status, 
+                                                           p.id AS product_id, p.name AS product_name, p.description AS product_description, p.price AS product_price
+                                                    FROM orders o
+                                                    INNER JOIN users u ON o.user_id = u.id
+                                                    INNER JOIN order_items oi ON o.id = oi.order_id
+                                                    INNER JOIN products p ON oi.product_id = p.id
+                                                    WHERE o.user_id = $user_id";
+                                            $result = $conn->query($sql);
 
-                                            if ($result_orders->num_rows > 0) {
-                                                while ($order = $result_orders->fetch_assoc()) {
-                                                    $order_id = $order['id'];
-                                                    $total_amount = $order['total_amount'];
-                                                    $created_at = $order['created_at'];
-                                                    $status = $order['status'];
-
-                                                    // Consultar os itens do pedido (order_items)
-                                                    $sql_items = "SELECT oi.*, p.name AS product_name, p.description AS product_description, p.price AS product_price
-                                                                  FROM order_items oi
-                                                                  INNER JOIN products p ON oi.product_id = p.id
-                                                                  WHERE oi.order_id = $order_id";
-                                                    $result_items = $conn->query($sql_items);
-
-                                                    if ($result_items->num_rows > 0) {
-                                                        while ($item = $result_items->fetch_assoc()) {
-                                                            echo "<tr>";
-                                                            echo "<td>{$item['product_id']}</td>";
-                                                            echo "<td>{$item['product_name']}</td>";
-                                                            echo "<td>{$item['product_description']}</td>";
-                                                            echo "<td>{$item['product_price']}</td>";
-                                                            echo "<td>{$created_at}</td>"; // Data da compra do pedido
-                                                            echo "<td>{$status}</td>"; // Estado do produto
-                                                            echo "</tr>";
-                                                        }
-                                                    }
+                                            // Verificar se há resultados
+                                            if ($result->num_rows > 0) {
+                                                // Loop through rows to display each order and its products
+                                                while ($row = $result->fetch_assoc()) {
+                                                    echo "<tr>";
+                                                    echo "<td>{$row['order_id']}</td>";
+                                                    echo "<td>{$row['created_at']}</td>";
+                                                    echo "<td>{$row['status']}</td>";
+                                                    echo "<td>{$row['product_id']}</td>";
+                                                    echo "<td>{$row['product_name']}</td>";
+                                                    echo "<td>{$row['product_price']}</td>";
+                                                    echo "</tr>";
                                                 }
                                             } else {
-                                                echo "<tr><td colspan='6'>Nenhum pedido encontrado.</td></tr>";
+                                                // Caso não haja pedidos encontrados
+                                                echo "<tr><td colspan='9'>Nenhum pedido encontrado.</td></tr>";
                                             }
+                                        } else {
+                                            // Caso o usuário não seja encontrado
+                                            echo "<tr><td colspan='9'>Usuário não encontrado.</td></tr>";
                                         }
 
                                         $conn->close();

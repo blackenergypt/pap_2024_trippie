@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mariadb
--- Tempo de geração: 16/06/2024 às 23:37
+-- Tempo de geração: 17/06/2024 às 22:58
 -- Versão do servidor: 11.3.2-MariaDB-1:11.3.2+maria~ubu2204
 -- Versão do PHP: 8.2.8
 
@@ -51,6 +51,15 @@ CREATE TABLE `orders` (
   `status` enum('pending','completed','cancelled') DEFAULT 'pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Despejando dados para a tabela `orders`
+--
+
+INSERT INTO `orders` (`id`, `user_id`, `total_amount`, `created_at`, `status`) VALUES
+(5, 20, 20.00, '2024-06-17 16:01:43', 'cancelled'),
+(6, 20, 20.00, '2024-06-17 19:02:00', 'pending'),
+(7, 20, 200.00, '2024-06-17 21:02:43', 'cancelled');
+
 -- --------------------------------------------------------
 
 --
@@ -64,6 +73,14 @@ CREATE TABLE `order_items` (
   `quantity` int(11) NOT NULL,
   `price` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `order_items`
+--
+
+INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `quantity`, `price`) VALUES
+(1, 5, 1, 1, 20.00),
+(2, 6, 2, 1, 200.00);
 
 -- --------------------------------------------------------
 
@@ -84,9 +101,9 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `price`, `description`, `image_url`) VALUES
-(1, 'Pro', 20.00, '<p>Tem um Website pessoal? Talvez um hobby? O nosso plano profissional é a sua melhor opção!</p><hr><p>Recursos De Apoio: Ticket e Email</p>', 'assets/images/produtos.png'),
-(2, 'Business', 200.00, '<p>Tem uma pequena empresa? O nosso plano Business é a sua melhor opção!\n</p><hr><p>Recursos De Apoio: Ticket, Email e Chat</p>', 'assets/images/produtos.png'),
-(3, 'Enterprise', 500.00, '<p>Tem uma grande empresa? Estar online é fundamental para si? Precisa de algo a pedido? O nosso plano Enterprise é a sua melhor opção!</p><hr><p>Recursos De Apoio: Ticket, Chat e Telefone</p>', 'assets/images/produtos.png');
+(1, 'Pro', 20.00, '<p>Tem um site pessoal? Talvez um hobby? O nosso plano profissional é a sua melhor opção!<br><a href=\"#\">Compare os nossos planos</a></p><p><b>Recursos de Suporte:</b></p><hr><p><img src=\"assets/images/chat_icon.png\" alt=\"Chat\"> Chat<br><img src=\"assets/images/ticket_icon.png\" alt=\"Ticket\"> Ticket<br><img src=\"assets/images/email_icon.png\" alt=\"Email\"> Email</p>', 'assets/images/imagem.png'),
+(2, 'Negócios', 200.00, '<p>Tem uma pequena ou média empresa? O nosso plano de Negócios é a sua melhor opção!<br><a href=\"#\">Compare os nossos planos</a></p><p><b>Recursos de Suporte:</b></p><hr><p><img src=\"assets/images/chat_icon.png\" alt=\"Chat\"> Chat<br><img src=\"assets/images/ticket_icon.png\" alt=\"Ticket\"> Ticket<br><img src=\"assets/images/email_icon.png\" alt=\"Email\"> Email</p>', 'assets/images/imagem.png'),
+(3, 'Empresarial', 500.00, '<p>Tem uma grande empresa? Estar online é crítico para si? Precisa de algo sob demanda? O nosso plano Empresarial é a sua melhor opção!<br><a href=\"#\">Compare os nossos planos</a></p><p><b>Recursos de Suporte:</b></p><hr><p><img src=\"assets/images/chat_icon.png\" alt=\"Chat\"> Chat<br><img src=\"assets/images/ticket_icon.png\" alt=\"Ticket\"> Ticket<br><img src=\"assets/images/email_icon.png\" alt=\"Email\"> Email<br><img src=\"assets/images/phone_icon.png\" alt=\"Telefone\"> Telefone</p>', 'assets/images/imagem.png');
 
 -- --------------------------------------------------------
 
@@ -105,6 +122,13 @@ CREATE TABLE `users` (
   `verification_code` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `users`
+--
+
+INSERT INTO `users` (`id`, `first_name`, `last_name`, `username`, `password`, `email`, `email_verified`, `verification_code`, `created_at`) VALUES
+(20, 'Joao', 'Silva', 'joaosilva', '$2y$10$C4OSnQOmjZ4vW9i0i7D5s.GXLgzo2qOBWl7P8VMnag7oEhYAZY2iO', 'joaosilva@teste.pt', 1, '22cd833d53883b42a7b87488553c9d44', '2024-06-17 15:38:32');
 
 --
 -- Índices para tabelas despejadas
@@ -153,19 +177,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de tabela `contacts`
 --
 ALTER TABLE `contacts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de tabela `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `products`
@@ -177,7 +201,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Restrições para tabelas despejadas

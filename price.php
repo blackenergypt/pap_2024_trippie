@@ -39,27 +39,32 @@ if (!$result) {
     <?php include 'includes/head.php';?>
 
     <style>
-    .price_section .price_container .box .btn-box button {
-        display: inline-block;
-        padding: 10px 35px;
-        background-color: #ff4646;
-        color: #ffffff;
-        border-radius: 5px;
-        border: 1px solid #ff4646;
-        -webkit-transition: all .3s;
-        transition: all .3s;
-        border: none;
-    }
+.price_section .price_container .box .btn-box button {
+  display: inline-block;
+  padding: 10px 35px;
+  background-color: #ff4646;
+  color: #ffffff;
+  border-radius: 5px;
+  border: 1px solid #ff4646;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  border: none;
+}
 
-    .price_section .price_container .box .btn-box button:hover {
-        background-color: transparente;
-        color: #ff4646;
-    }
+.price_section .price_container .box .btn-box button:hover {
+  background-color: transparente;
+  color: #ff4646;
+}
 
-    .price_section .price_container .box .btn-box button:hover {
-        background-color: #03a7d3;
-        color: #ffffff;
-    }
+.price_section .price_container .box .btn-box button:hover {
+  background-color: #03a7d3;
+  color: #ffffff;
+}
+.price_features p img {
+  width: 20px;
+  height: auto;
+}
+
     </style>
 </head>
 

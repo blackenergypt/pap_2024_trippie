@@ -22,7 +22,6 @@
         <?php include 'includes/header.php';?>
     </div>
 
-
     <section class="service_section layout_padding">
         <div class="container">
             <div class="heading_container heading_center">
@@ -36,7 +35,7 @@
                 <div class="col-md-6 col-lg-4">
                     <div class="box ">
                         <div class="img-box">
-                            <img src="assets/imagesassets/imagesimages/s1.png" alt="">
+                        <i class="fa-solid fa-cube"></i>
                         </div>
                         <div class="detail-box">
                             <h4>
@@ -44,63 +43,52 @@
                             </h4>
                             <p>
                                 Bloquear ataques cibernéticos ao simplesmente analisar os pacotes dos mesmos, sem a
-                                necessidade de interações humanas.
+                                necessidade de
+                                interações humanas.
                             </p>
-                            <a href="">
-                                Read More
-                                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-
-                            </a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <div class="box ">
                         <div class="img-box">
-                            <img src="assets/imagesassets/imagesimages/s2.png" alt="">
+                        <i class="fa-solid fa-database"></i>
                         </div>
                         <div class="detail-box">
                             <h4>
-                                InnovaWall DataBase
+                                InnovaWall Database
                             </h4>
                             <p>
                                 Uma base de dados, que contem dados coletados pela equipa da InnovaWall de padrões e
-                                comportamentos de ataques captados por nós e a origem dos mesmos
+                                comportamentos de
+                                ataques captados por nós e a origem dos mesmos
                             </p>
-                            <a href="">
-                                Read More
-                                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-
-                            </a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 ">
                     <div class="box ">
                         <div class="img-box">
-                            <img src="assets/imagesassets/imagesimages/s3.png" alt="">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
                         </div>
                         <div class="detail-box">
                             <h4>
-                                Sensor Mode
+                                Sensore Mode
                             </h4>
                             <p>
                                 Os sensores da InnovaWall estão sempre à procura de ataques que possam tentar
-                                interromper a disponibilidade do seu website. Toda a detenção é realizada em menos de
-                                meio segundo, em média. Pronto para proteger o seu website!
+                                interromper a
+                                disponibilidade do seu website. Toda a detenção é realizada em menos de meio segundo, em
+                                média. Pronto
+                                para proteger o seu website!
                             </p>
-                            <a href="">
-                                Read More
-                                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-
-                            </a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <div class="box ">
                         <div class="img-box">
-                            <img src="assets/imagesassets/imagesimages/s4.png" alt="">
+                        <i class="fa-solid fa-fingerprint"></i>
                         </div>
                         <div class="detail-box">
                             <h4>
@@ -110,18 +98,13 @@
                                 Um desafio de interação humana, usado em caso de emergência ou em caso de muitos pedidos
                                 por segundo a 'dar a volta' às nossas primeiras camadas.
                             </p>
-                            <a href="">
-                                Read More
-                                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-
-                            </a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <div class="box ">
                         <div class="img-box">
-                            <img src="assets/imagesassets/imagesimages/s5.png" alt="">
+                        <i class="fa-solid fa-robot"></i>
                         </div>
                         <div class="detail-box">
                             <h4>
@@ -129,20 +112,16 @@
                             </h4>
                             <p>
                                 Capacidade de detectar robôs em tempo real sem a necessidade de desafios ou qualquer
-                                tipo de software com interação humana.
+                                tipo de software
+                                com interação humana.
                             </p>
-                            <a href="">
-                                Read More
-                                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-
-                            </a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <div class="box ">
                         <div class="img-box">
-                            <img src="assets/imagesassets/imagesimages/s6.png" alt="">
+                        <i class="fa-solid fa-hat-cowboy"></i>
                         </div>
                         <div class="detail-box">
                             <h4>
@@ -150,13 +129,9 @@
                             </h4>
                             <p>
                                 Detectar robôs ou humanos que estejam a mentir sobre os seus recursos ou hardware, ou a
-                                tentar manipular as suas informações.
+                                tentar manipular
+                                as suas informações.
                             </p>
-                            <a href="">
-                                Read More
-                                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-
-                            </a>
                         </div>
                     </div>
                 </div>

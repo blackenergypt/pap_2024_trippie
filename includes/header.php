@@ -8,7 +8,8 @@ session_start(); // Inicia a sessão, se ainda não estiver iniciada
   <div class="container-fluid">
     <nav class="navbar navbar-expand-lg custom_nav-container">
       <a class="navbar-brand" href="index.php">
-        <span>InnovaWall</span>
+      <img src="../assets/images/logo.png" alt="" style="width: 180px; height: auto;">
+
       </a>
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"

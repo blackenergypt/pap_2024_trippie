@@ -1,7 +1,7 @@
 <?php
 // Configuração do banco de dados
-$servername = "192.168.100.105";
+$servername = "localhost";
 $username = "root";
-$password = "as123as321";
+$password = "";
 $dbname = "user_registration";
 ?>

@@ -31,8 +31,7 @@ $telefone = mysqli_real_escape_string($conn, $telefone);
 $mensagem = mysqli_real_escape_string($conn, $mensagem);
 
 // Prepara a query SQL para inserir os dados
-$sql = "INSERT INTO contacts (name, last_name, email, phone, message, created_at) 
-        VALUES ('$nome', '$apelido', '$email', '$telefone', '$mensagem', NOW())";
+$sql = "INSERT INTO contacts (name, last_name, email, phone, message, created_at) VALUES ('$nome', '$apelido', '$email', '$telefone', '$mensagem', NOW())";
 
 // Executa a query e verifica se foi bem sucedida
 if ($conn->query($sql) === TRUE) {
