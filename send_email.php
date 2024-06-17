@@ -14,7 +14,7 @@ function sendRecoveryEmail($to, $subject, $message) {
         $mail->Host = 'mail.devcode.pt'; // Substitua pelo seu servidor SMTP
         $mail->SMTPAuth = true;
         $mail->Username = 'auth@devcode.pt'; // Substitua pelo seu e-mail SMTP
-        $mail->Password = 'teste'; // Substitua pela sua senha SMTP
+        $mail->Password = 'y6f1iazug7ulcHOt'; // Substitua pela sua senha SMTP
         $mail->SMTPSecure = false; // Sem criptografia
         $mail->SMTPAutoTLS = false; // Desativar TLS automático
         $mail->Port = 25; // Ou a porta correta do seu servidor SMTP

@@ -1,138 +1,113 @@
 <?php
+// Configurar a exibição de erros para desenvolvimento (remover ou comentar em produção)
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-//session_start();
+
+// Iniciar a sessão, se necessário (descomentar a linha abaixo)
+// session_start();
+
+// Incluir o ficheiro de conexão com a base de dados
 require_once('db_connect.php');
 
-// Consulta para buscar todos os produtos da tabela
+// Consulta SQL para buscar todos os produtos da tabela 'products'
 $query = "SELECT * FROM products";
+
+// Executar a consulta
 $result = mysqli_query($conn, $query);
 
+// Verificar se a consulta foi executada com sucesso
 if (!$result) {
+    // Se a consulta falhar, exibir uma mensagem de erro e terminar a execução do script
     die("Erro ao recuperar produtos: " . mysqli_error($conn));
 }
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="pt-pt">
 
 <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <meta name="keywords" content="" />
-  <meta name="description" content="" />
-  <meta name="author" content="" />
-  <title>InnovaWall</title>
-  <?php include 'includes/head.php';?>
-  <style>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    
+    <title>InnovaWall</title>
+
+    <?php include 'includes/head.php';?>
+
+    <style>
     .price_section .price_container .box .btn-box button {
-  display: inline-block;
-  padding: 10px 35px;
-  background-color: #ff4646;
-  color: #ffffff;
-  border-radius: 5px;
-  border: 1px solid #ff4646;
-  -webkit-transition: all .3s;
-  transition: all .3s;
-  border: none;
-}
+        display: inline-block;
+        padding: 10px 35px;
+        background-color: #ff4646;
+        color: #ffffff;
+        border-radius: 5px;
+        border: 1px solid #ff4646;
+        -webkit-transition: all .3s;
+        transition: all .3s;
+        border: none;
+    }
 
-.price_section .price_container .box .btn-box button:hover {
-  background-color: transparent;
-  color: #ff4646;
-}
+    .price_section .price_container .box .btn-box button:hover {
+        background-color: transparente;
+        color: #ff4646;
+    }
 
-.price_section .price_container .box .btn-box button:hover {
-  background-color: #03a7d3;
-  color: #ffffff;
-}
-  </style>
+    .price_section .price_container .box .btn-box button:hover {
+        background-color: #03a7d3;
+        color: #ffffff;
+    }
+    </style>
 </head>
 
 <body class="sub_page">
-  <div class="hero_area">
-    <?php include 'includes/header.php';?>
-
-    <section class="slider_section">
-      <div id="customCarousel1" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="container">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="detail-box">
-                    <h1>Fast & Secure <br> Web Hosting</h1>
-                    <p>Anything embarrassing hidden in the middle of text. All the Lorem Ipsuanything embarrassing hidden
-                      in the middle of text. All the Lorem Ipsumm </p>
-                    <div class="btn-box">
-                      <a href="" class="btn-1">Read More</a>
-                      <a href="" class="btn-2">Contact Us</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="row">
-                    <div class="col-lg-10 mx-auto">
-                      <div class="img-box">
-                        <img src="assets/images/slider-img.png" alt="">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-        <div class="carousel_btn-box">
-          <a class="carousel-control-prev" href="#customCarousel1" role="button" data-slide="prev">
-            <i class="fa fa-angle-left" aria-hidden="true"></i>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#customCarousel1" role="button" data-slide="next">
-            <i class="fa fa-angle-right" aria-hidden="true"></i>
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <section class="price_section layout_padding">
-    <div class="container">
-      <div class="heading_container heading_center">
-        <h2>Oferecemos os melhores preços</h2>
-      </div>
-      <div class="price_container">
-        <?php while ($row = mysqli_fetch_assoc($result)) : ?>
-        <div class="box">
-          <div class="detail-box">
-            <img src="assets/images/produtos.png" width="145" height="145" alt ="">
-            <h2>€ <span><?php echo number_format($row['price'], 2, ',', '.'); ?></span></h2>
-            <h6><?php echo $row['name']; ?></h6>
-            <ul class="price_features">
-              <?php echo $row['description']; ?>
-            </ul>
-          </div>
-          <div class="btn-box">
-    <form action="add_to_cart.php" method="post" class="add-to-cart-form">
-        <input type="hidden" name="produto_id" value="<?php echo $row['id']; ?>">
-        <button type="submit" class="add-to-cart-btn">Adicionar ao Carrinho</button>
-    </form>
-</div>
-
-        </div>
-        <?php endwhile; ?>
-      </div>
+    <div class="hero_area">
+        <?php include 'includes/header.php';?>
     </div>
-  </section>
 
-  <!-- Seção de informações, footer, scripts -->
-  <?php include 'includes/footer.php';?>
-  <?php include 'includes/scripts.php';?>
-  <script>
+    <section class="price_section layout_padding">
+        <div class="container">
+            <div class="heading_container heading_center">
+                <h2>Oferecemos os melhores preços</h2>
+            </div>
+            <div class="price_container">
+                <!-- Loop para exibir todos os produtos -->
+                <?php while ($row = mysqli_fetch_assoc($result)) : ?>
+                <div class="box">
+                    <div class="detail-box">
+                        <!-- Exibir a imagem do produto -->
+                        <img src="assets/images/produtos.png" width="145" height="145" alt="">
+                        <!-- Exibir o preço do produto formatado -->
+                        <h2>€ <span><?php echo number_format($row['price'], 2, ',', '.'); ?></span></h2>
+                        <!-- Exibir o nome do produto -->
+                        <h6><?php echo $row['name']; ?></h6>
+                        <!-- Exibir a descrição do produto -->
+                        <ul class="price_features">
+                            <?php echo $row['description']; ?>
+                        </ul>
+                    </div>
+                    <div class="btn-box">
+                        <!-- Formulário para adicionar o produto ao carrinho -->
+                        <form action="add_to_cart.php" method="post" class="add-to-cart-form">
+                            <!-- Campo oculto para enviar o ID do produto -->
+                            <input type="hidden" name="produto_id" value="<?php echo $row['id']; ?>">
+                            <!-- Botão para adicionar ao carrinho -->
+                            <button type="submit" class="add-to-cart-btn">Adicionar ao Carrinho</button>
+                        </form>
+                    </div>
+                </div>
+                <?php endwhile; ?>
+            </div>
+        </div>
+    </section>
+
+    <?php include 'includes/footer.php';?>
+    <?php include 'includes/scripts.php';?>
+
+    <script>
     document.addEventListener('DOMContentLoaded', function() {
         var addToCartForms = document.querySelectorAll('.add-to-cart-form');
 
@@ -143,29 +118,35 @@ if (!$result) {
                 var formData = new FormData(form);
 
                 fetch('add_to_cart.php', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => response.json())
-                .then(data => {
-                    // Aqui você pode processar a resposta do backend (add_to_cart.php)
-                    console.log(data); // Exemplo: {"success": true, "message": "Produto adicionado ao carrinho"}
-                    alert(data.message); // Exibe uma mensagem de sucesso ou erro
-                })
-                .catch(error => {
-                    console.error('Erro ao enviar requisição AJAX:', error);
-                    alert('Ocorreu um erro ao adicionar o produto ao carrinho.');
-                });
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        // Processar a resposta do backend (add_to_cart.php)
+                        console.log(data); // Exemplo: {"success": true, "message": "Produto adicionado ao carrinho"}
+                        alert(data.message); // Exibir uma mensagem de sucesso ou erro
+                    })
+                    .catch(error => {
+                        console.error('Erro ao enviar requisição AJAX:', error);
+                        alert('Ocorreu um erro ao adicionar o produto ao carrinho.');
+                    });
             });
         });
     });
-</script>
+    </script>
 
 </body>
 
 </html>
 
 <?php
+// Redefinir o ponteiro de dados do resultado
+mysqli_data_seek($result, 0);
+
+// Liberar a memória associada ao resultado
 mysqli_free_result($result);
+
+// Fechar a conexão com a base de dados
 mysqli_close($conn);
 ?>
