@@ -7,15 +7,6 @@ if (!isset($_SESSION['username'])) {
 }
 
 require 'config.php'; // Incluir o arquivo de configuração com as credenciais do banco de dados
-
-// Conexão com o banco de dados
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Verifica a conexão
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -67,7 +58,13 @@ if ($conn->connect_error) {
                                     </thead>
                                     <tbody>
                                         <?php
-           
+                                        // Conectar ao banco de dados
+                                        $conn = new mysqli($servername, $username, $password, $dbname);
+
+                                        // Verificar conexão
+                                        if ($conn->connect_error) {
+                                            die("Connection failed: " . $conn->connect_error);
+                                        }
 
                                         // Obter o ID do usuário logado
                                         $username = $_SESSION['username'];
@@ -112,8 +109,6 @@ if ($conn->connect_error) {
                                             } else {
                                                 echo "<tr><td colspan='6'>Nenhum pedido encontrado.</td></tr>";
                                             }
-                                        } else {
-                                            echo "<tr><td colspan='6'>Nenhum usuário encontrado.</td></tr>";
                                         }
 
                                         $conn->close();
