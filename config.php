@@ -1,7 +1,7 @@
 <?php
 // Configuração do banco de dados
 $servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "user_registration";
+$username = "dev_root";
+$password = "as123as321";
+$dbname = "pap2024_pedro_sliva";
 ?>

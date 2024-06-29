@@ -1,6 +1,10 @@
 <?php
+session_start(); // Inicia a sessão, se ainda não estiver iniciada
 
-// Incluir o ficheiro de conexão com a base de dados
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 include_once 'db_connect.php';
 
 // Inicializar o carrinho se ainda não estiver inicializado na sessão
@@ -8,46 +12,51 @@ if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [];
 }
 
+$response = ['success' => false, 'message' => 'Ação não realizada.'];
+
 // Adicionar produto ao carrinho
-if (isset($_POST['product_id'])) {
-    $product_id = $_POST['product_id'];
+if (isset($_POST['product_id']) && is_numeric($_POST['product_id'])) {
+    $product_id = intval($_POST['product_id']);
 
-    // Verificar se o produto já está no carrinho
-    if (isset($_SESSION['cart'][$product_id])) {
-        // Se o produto já estiver no carrinho, incrementar a quantidade
-        $_SESSION['cart'][$product_id]['quantity']++;
-    } else {
-        // Obter informações do produto do banco de dados
-        $sql = "SELECT * FROM products WHERE id = ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("i", $product_id);
-        $stmt->execute();
-        $result = $stmt->get_result();
+    // Verificar se o produto é válido antes de adicioná-lo ao carrinho
+    $sql = "SELECT * FROM products WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $product_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-        // Verificar se o produto foi encontrado no banco de dados
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            // Adicionar o produto ao carrinho com quantidade inicial de 1
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        if (isset($_SESSION['cart'][$product_id])) {
+            $_SESSION['cart'][$product_id]['quantity']++;
+        } else {
             $_SESSION['cart'][$product_id] = [
                 'name' => $row['name'],
                 'price' => $row['price'],
                 'quantity' => 1
             ];
         }
+        $response = ['success' => true, 'message' => 'Produto adicionado ao carrinho.'];
+    } else {
+        $response = ['success' => false, 'message' => 'Produto não encontrado.'];
     }
+    $stmt->close();
 }
 
 // Remover produto do carrinho
-if (isset($_POST['remove_product_id'])) {
-    $remove_product_id = $_POST['remove_product_id'];
-    // Remover o produto do carrinho
-    unset($_SESSION['cart'][$remove_product_id]);
+if (isset($_POST['remove_product_id']) && is_numeric($_POST['remove_product_id'])) {
+    $remove_product_id = intval($_POST['remove_product_id']);
+    if (isset($_SESSION['cart'][$remove_product_id])) {
+        unset($_SESSION['cart'][$remove_product_id]);
+        $response = ['success' => true, 'message' => 'Produto removido do carrinho.'];
+    } else {
+        $response = ['success' => false, 'message' => 'Produto não encontrado no carrinho.'];
+    }
 }
 
 // Função para calcular o total do carrinho
 function calculateCartTotal($cart) {
     $total_amount = 0;
-    // Percorrer todos os itens do carrinho para calcular o total
     foreach ($cart as $item) {
         $total_amount += $item['price'] * $item['quantity'];
     }
@@ -58,6 +67,13 @@ function calculateCartTotal($cart) {
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['checkout_submit'])) {
     // Redirecionar para checkout.php
     header("Location: checkout.php");
+    exit();
+}
+
+// Retornar resposta JSON se for uma requisição AJAX
+if (!empty($_POST)) {
+    header('Content-Type: application/json');
+    echo json_encode($response);
     exit();
 }
 ?>
@@ -75,10 +91,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['checkout_submit'])) {
     <div class="hero_area">
         <?php include 'includes/header.php'; ?>
     </div>
-
     <section class="cart_section layout_padding">
-        <div class="container">
+        <div id="order-standard_cart" class="container">
             <h2>O Seu Carrinho de Compras</h2>
+            <h6>Revisão e checkout</h6>
             <div class="cart_items">
                 <?php if (!empty($_SESSION['cart'])): ?>
                     <table>
@@ -93,13 +109,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['checkout_submit'])) {
                         <tbody>
                             <?php foreach ($_SESSION['cart'] as $product_id => $item): ?>
                                 <tr>
-                                    <td><?php echo $item['name']; ?></td>
-                                    <td><?php echo $item['quantity']; ?></td>
+                                    <td><?php echo htmlspecialchars($item['name']); ?></td>
+                                    <td><?php echo htmlspecialchars($item['quantity']); ?></td>
                                     <td><?php echo number_format($item['price'] * $item['quantity'], 2, ',', '.'); ?></td>
                                     <td class="actions">
-                                        <!-- Formulário para remover o produto do carrinho -->
-                                        <form method="post" action="cart.php">
-                                            <input type="hidden" name="remove_product_id" value="<?php echo $product_id; ?>">
+                                        <form method="post" class="remove-form">
+                                            <input type="hidden" name="remove_product_id" value="<?php echo htmlspecialchars($product_id); ?>">
                                             <button type="submit">Remover</button>
                                         </form>
                                     </td>
@@ -112,7 +127,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['checkout_submit'])) {
                         </tbody>
                     </table>
                     <div class="checkout_btn">
-                        <!-- Formulário para finalizar a compra -->
                         <form method="post" action="cart.php">
                             <button type="submit" name="checkout_submit">Finalizar Compra</button>
                         </form>
@@ -126,5 +140,92 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['checkout_submit'])) {
 
     <?php include 'includes/footer.php'; ?>
     <?php include 'includes/scripts.php'; ?>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.remove-form').forEach(function(form) {
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                var formData = new FormData(form);
+                fetch('cart.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.success) {
+                        Toastify({
+                            text: data.message,
+                            duration: 3000,
+                            close: true,
+                            gravity: "top",
+                            position: "right",
+                            style: {
+                                background: "green",
+                            },
+                            stopOnFocus: true
+                        }).showToast();
+
+                        setTimeout(function() {
+                            location.reload();
+                        }, 1000);
+                    } else {
+                        Toastify({
+                            text: data.message,
+                            duration: 3000,
+                            close: true,
+                            gravity: "top",
+                            position: "right",
+                            style: {
+                                background: "red",
+                            },
+                            stopOnFocus: true
+                        }).showToast();
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro ao enviar requisição AJAX:', error);
+                    Toastify({
+                        text: 'Ocorreu um erro ao processar a solicitação.',
+                        duration: 3000,
+                        close: true,
+                        gravity: "top",
+                        position: "right",
+                        style: {
+                            background: "red",
+                        },
+                        stopOnFocus: true
+                    }).showToast();
+                });
+            });
+        });
+    });
+    </script>
+    <style>
+    #order-standard_cart .checkout-security-msg {
+        margin: 20px 0;
+        padding-left: 85px;
+        font-size: .8em;
+    }
+
+    .alert-warning {
+        background-color: #c1801f;
+        border: none;
+        color: #fff;
+    }
+
+    #order-standard_cart .checkout-security-msg svg {
+        float: left;
+        margin-left: -48px;
+        font-size: 1.8em;
+        color: #b7ff2e !important;
+    }
+    </style>
 </body>
 </html>

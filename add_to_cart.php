@@ -10,16 +10,19 @@ header('Content-Type: application/json');
 
 // Verificar se o ID do produto foi enviado via POST
 if (isset($_POST['produto_id'])) {
-    $produto_id = $_POST['produto_id'];
+    $produto_id = intval($_POST['produto_id']);
     $quantidade = 1; // Quantidade fixa, neste caso será sempre 1
 
     // Verificar se o produto existe na base de dados
-    $query = "SELECT * FROM products WHERE id = $produto_id";
-    $result = mysqli_query($conn, $query);
+    $query = "SELECT * FROM products WHERE id = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("i", $produto_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     // Verificar se a consulta retornou algum resultado
-    if (mysqli_num_rows($result) > 0) {
-        $produto = mysqli_fetch_assoc($result);
+    if ($result->num_rows > 0) {
+        $produto = $result->fetch_assoc();
 
         // Adicionar o item ao carrinho (geralmente seria melhor validar antes de inserir)
         if (!isset($_SESSION['cart'])) {
@@ -28,15 +31,12 @@ if (isset($_POST['produto_id'])) {
         }
 
         // Verificar se o produto já existe no carrinho
-        $key = array_search($produto_id, array_column($_SESSION['cart'], 'produto_id'));
-        
-        if ($key !== false) {
+        if (isset($_SESSION['cart'][$produto_id])) {
             // Se já existe, apenas atualizar a quantidade
-            $_SESSION['cart'][$key]['quantity'] += $quantidade;
+            $_SESSION['cart'][$produto_id]['quantity'] += $quantidade;
         } else {
             // Se não existe, adicionar como um novo item no carrinho
-            $_SESSION['cart'][] = array(
-                'produto_id' => $produto_id,
+            $_SESSION['cart'][$produto_id] = array(
                 'name' => $produto['name'], 
                 'price' => $produto['price'], 
                 'quantity' => $quantidade
@@ -51,10 +51,10 @@ if (isset($_POST['produto_id'])) {
     }
 
     // Liberar a memória associada ao resultado
-    mysqli_free_result($result);
+    $stmt->close();
 
     // Fechar a conexão com a base de dados
-    mysqli_close($conn);
+    $conn->close();
 } else {
     // Se o ID do produto não for enviado, retornar uma resposta de erro
     echo json_encode(array('success' => false, 'message' => 'Parâmetros inválidos para adicionar ao carrinho.'));

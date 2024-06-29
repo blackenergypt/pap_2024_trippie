@@ -1,5 +1,9 @@
 <?php
 session_start();
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 include_once 'db_connect.php';
 
 // Verifica se há itens no carrinho
@@ -34,12 +38,18 @@ if ($result_user->num_rows == 1) {
 // Processar dados do formulário de checkout quando o formulário for submetido
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Dados do formulário de checkout
-    $fname = $_POST['fname'];
-    $lname = $_POST['lname'];
-    $email = $_POST['email'];
-    $address = $_POST['address'];
-    $city = $_POST['city'];
-    $zip = $_POST['zip'];
+    $fname = trim($_POST['fname']);
+    $lname = trim($_POST['lname']);
+    $email = trim($_POST['email']);
+    $address = trim($_POST['address']);
+    $city = trim($_POST['city']);
+    $zip = trim($_POST['zip']);
+
+    // Verificar se os dados do formulário são válidos
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo "Erro: Email inválido.";
+        exit();
+    }
 
     // Calcular o total do pedido
     $total_amount = 0;
@@ -47,36 +57,69 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $total_amount += $item['price'] * $item['quantity'];
     }
 
-    // Inserir pedido na tabela `orders`
-    $sql_order = "INSERT INTO orders (user_id, total_amount, created_at, status) VALUES (?, ?, current_timestamp(), 'pending')";
-    $stmt_order = $conn->prepare($sql_order);
-    $stmt_order->bind_param("id", $user_id, $total_amount);
-
-    if ($stmt_order->execute()) {
-        $order_id = $stmt_order->insert_id;
-
-        // Inserir itens do pedido na tabela `order_items`
-        foreach ($_SESSION['cart'] as $product_id => $item) {
-            $quantity = $item['quantity'];
-            $price = $item['price'];
-
-            $sql_items = "INSERT INTO order_items (order_id, product_id, quantity, price) VALUES (?, ?, ?, ?)";
-            $stmt_items = $conn->prepare($sql_items);
-            $stmt_items->bind_param("iiid", $order_id, $product_id, $quantity, $price);
-            $stmt_items->execute();
+    // Verificar se todos os produtos no carrinho são válidos
+    $all_products_valid = true; // Flag para verificar se todos os produtos são válidos
+    foreach ($_SESSION['cart'] as $product_id => $item) {
+        // Verificar se o produto ainda existe e tem um ID válido
+        if ($product_id <= 0) {
+            $all_products_valid = false; // Produto com ID inválido
+            echo "Erro: Produto com ID $product_id não encontrado.";
+            break;
         }
 
-        // Limpar carrinho após finalizar o pedido
-        unset($_SESSION['cart']);
+        $sql_check_product = "SELECT id FROM products WHERE id = ?";
+        $stmt_check_product = $conn->prepare($sql_check_product);
+        $stmt_check_product->bind_param("i", $product_id);
+        $stmt_check_product->execute();
+        $result_check_product = $stmt_check_product->get_result();
 
-        // Redirecionar para a página de confirmação com o ID do pedido
-        header("Location: confirmation.php?order_id=$order_id");
-        exit();
+        if ($result_check_product->num_rows == 0) {
+            $all_products_valid = false; // Produto não encontrado na base de dados
+            echo "Erro: Produto com ID $product_id não encontrado.";
+            break;
+        }
+
+        $stmt_check_product->close();
+    }
+
+    if ($all_products_valid) {
+        // Inserir pedido na tabela `orders`
+        $sql_order = "INSERT INTO orders (user_id, total_amount, created_at, status) VALUES (?, ?, current_timestamp(), 'pending')";
+        $stmt_order = $conn->prepare($sql_order);
+        $stmt_order->bind_param("id", $user_id, $total_amount);
+
+        if ($stmt_order->execute()) {
+            $order_id = $stmt_order->insert_id;
+
+            // Inserir itens do pedido na tabela `order_items`
+            foreach ($_SESSION['cart'] as $product_id => $item) {
+                $quantity = $item['quantity'];
+                $price = $item['price'];
+
+                $sql_items = "INSERT INTO order_items (order_id, product_id, quantity, price) VALUES (?, ?, ?, ?)";
+                $stmt_items = $conn->prepare($sql_items);
+                $stmt_items->bind_param("iiid", $order_id, $product_id, $quantity, $price);
+                $stmt_items->execute();
+                $stmt_items->close();
+            }
+
+            // Limpar carrinho após finalizar o pedido
+            unset($_SESSION['cart']);
+
+            // Redirecionar para a página de confirmação com o ID do pedido
+            header("Location: confirmation.php?order_id=$order_id");
+            exit();
+        } else {
+            echo "Erro ao processar o pedido: " . $conn->error;
+        }
+
+        $stmt_order->close();
     } else {
-        echo "Erro ao processar o pedido: " . $conn->error;
+        echo "Erro: Não foi possível completar o pedido devido a produtos inválidos.";
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-pt">
