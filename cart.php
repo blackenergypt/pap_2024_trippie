@@ -91,8 +91,8 @@ if (!empty($_POST)) {
     <div class="hero_area">
         <?php include 'includes/header.php'; ?>
     </div>
-    <section class="cart_section layout_padding">
-        <div id="order-standard_cart" class="container">
+    <section class="cart_section layout_padding" style="background-image: url(assets/images/bg.jpeg); background-position: center; background-repeat: no-repeat; background-size: cover;">
+        <div id="order-standard_cart" class="container text-white">
             <h2>O Seu Carrinho de Compras</h2>
             <h6>Revisão e checkout</h6>
             <div class="cart_items">
@@ -126,7 +126,7 @@ if (!empty($_POST)) {
                             </tr>
                         </tbody>
                     </table>
-                    <div class="checkout_btn">
+                    <div class="checkout_btn" style="justify-content: end!important;">
                         <form method="post" action="cart.php">
                             <button type="submit" name="checkout_submit">Finalizar Compra</button>
                         </form>

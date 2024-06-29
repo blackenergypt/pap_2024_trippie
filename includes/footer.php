@@ -1,4 +1,4 @@
-<section class="info_section layout_padding2">
+<section class="info_section" style="background-image: url(assets/images/bg.jpg); background-position: center; background-repeat: no-repeat; background-size: cover;">
     <div class="container">
         <div class="row">
             <div class="col-md-7">
@@ -75,12 +75,9 @@
                 </div>
             </div>
         </div>
-    </div>
-</section>
-<footer class="footer_section">
-    <div class="container">
+<div class="footer_section">
         <p>
             &copy; <span id="displayYear"></span> InnovaWall Todos os direitos reservados.
         </p>
-    </div>
-</footer>
+    </div></div>
+</section>

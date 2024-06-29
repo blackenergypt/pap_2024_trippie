@@ -173,8 +173,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <?php include 'includes/header.php'; ?>
     </div>
 
-    <section class="checkout_section layout_padding">
-        <div class="container">
+    <section class="checkout_section layout_padding" style="background-image: url(assets/images/bg.jpeg); background-position: center; background-repeat: no-repeat; background-size: cover;">
+        <div class="container" style="  background-color: rgba(255, 255, 255, 0.1);   padding: 20px;
+  border-radius: 10px; padding: 40px;
+    max-width: 600px;">
             <h2>Checkout</h2>
             <form method="post">
                 <label for="fname">Nome:</label>
