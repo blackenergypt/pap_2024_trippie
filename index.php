@@ -1,6 +1,19 @@
 <?php
-// Iniciar a sessão para armazenar os dados do carrinho
-session_start();
+session_start(); // Iniciar a sessão para armazenar os dados do carrinho
+
+// Include core files
+include 'includes/core.php';
+
+// Include language file based on the session or default to 'pt'
+$lang = isset($_SESSION['lang']) ? $_SESSION['lang'] : 'en';
+switch ($lang) {
+    case 'en':
+        include 'lang/en.php';
+        break;
+    default:
+        include 'lang/pt.php';
+        break;
+}
 
 ?>
 <!DOCTYPE html>
@@ -14,38 +27,45 @@ session_start();
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-
-    <title>InnovaWall</title>
-
+    <title><?php echo $lang['index-title'];?></title>
     <?php include 'includes/head.php'; ?>
-
 </head>
 
 <body>
-
     <div class="hero_area">
         <?php include 'includes/header.php'; ?>
-
         <section class="slider_section ">
             <div id="customCarousel1" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
-
                     <div class="carousel-item active">
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="detail-box text-center">
+                                        <h1><?=$lang['index-text-1'];?></h1>
+                                        <p><?=$lang['index-text-2'];?></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class=" col-lg-10 mx-auto">
+                                            <div class="img-box">
+                                                <img src="https://i.imgur.com/3ZZQUqf.png" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                                        <h1>
-                                            A Segurança que
-                                            não sabias que precisavas <br>
-                                        </h1>
-                                        <p>
-                                            A InnovaWall é uma rede de distribuição de informação que permite fornecer
-                                            conteúdo Web projetada para proteger redes com uma solução de mitigação
-                                            automatizada de última geração desenvolvida internamente que visa ser
-                                            segura, privada, rápida e confiável, com o objetivo de proteger serviços
-                                            contra qualquer ataque cibernético. </p>
+                    <div class="carousel-item">
+                        <div class="container ">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="detail-box text-center">
+                                        <h1><?=$lang['index-text-3'];?></h1>
+                                        <p><?=$lang['index-text-4'];?></p>
 
                                     </div>
                                 </div>
@@ -67,47 +87,8 @@ session_start();
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="detail-box text-center">
-                                        <h1>
-                                            A Proteção que
-                                            não sabias que precisavas <br>
-                                        </h1>
-                                        <p>
-                                            A InnovaWall é uma rede de distribuição de informação que permite fornecer
-                                            conteúdo Web projetada para proteger redes com uma solução de mitigação
-                                            automatizada de última geração desenvolvida internamente que visa ser
-                                            segura, privada, rápida e confiável, com o objetivo de proteger serviços
-                                            contra qualquer ataque cibernético. </p>
-
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="row">
-                                        <div class=" col-lg-10 mx-auto">
-                                            <div class="img-box">
-                                                <img src="https://i.imgur.com/3ZZQUqf.png" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="carousel-item">
-                        <div class="container ">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="detail-box text-center">
-                                        <h1>
-                                            A Empresa que
-                                            não sabias que precisavas <br>
-                                        </h1>
-                                        <p>
-                                            A InnovaWall é uma rede de distribuição de informação que permite fornecer
-                                            conteúdo Web projetada para proteger redes com uma solução de mitigação
-                                            automatizada de última geração desenvolvida internamente que visa ser
-                                            segura, privada, rápida e confiável, com o objetivo de proteger serviços
-                                            contra qualquer ataque cibernético. </p>
+                                        <h1><?=$lang['index-text-5'];?></h1>
+                                        <p><?=$lang['index-text-6'];?></p>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -127,11 +108,11 @@ session_start();
                 <div class="carousel_btn-box">
                     <a class="carousel-control-prev" href="#customCarousel1" role="button" data-slide="prev">
                         <i class="fa fa-angle-left" aria-hidden="true"></i>
-                        <span class="sr-only">Previous</span>
+                        <span class="sr-only"><?=$lang['index-text-7'];?></span>
                     </a>
                     <a class="carousel-control-next" href="#customCarousel1" role="button" data-slide="next">
                         <i class="fa fa-angle-right" aria-hidden="true"></i>
-                        <span class="sr-only">Next</span>
+                        <span class="sr-only"><?=$lang['index-text-8'];?></span>
                     </a>
                 </div>
             </div>
@@ -141,9 +122,7 @@ session_start();
     <section class="service_section layout_padding">
         <div class="container">
             <div class="heading_container heading_center">
-                <h2>
-                    As nossas soluções de cibersegurança
-                </h2>
+                <h2><?=$lang['index-text-9'];?></h2>
             </div>
         </div>
         <div class="container ">
@@ -154,14 +133,8 @@ session_start();
                         <i class="fa-solid fa-cube"></i>
                         </div>
                         <div class="detail-box">
-                            <h4>
-                                Deep Packet Inspection
-                            </h4>
-                            <p>
-                                Bloquear ataques cibernéticos ao simplesmente analisar os pacotes dos mesmos, sem a
-                                necessidade de
-                                interações humanas.
-                            </p>
+                            <h4><?=$lang['index-text-10'];?></h4>
+                            <p><?=$lang['index-text-11'];?></p>
                         </div>
                     </div>
                 </div>
@@ -171,14 +144,8 @@ session_start();
                         <i class="fa-solid fa-database"></i>
                         </div>
                         <div class="detail-box">
-                            <h4>
-                                InnovaWall Database
-                            </h4>
-                            <p>
-                                Uma base de dados, que contem dados coletados pela equipa da InnovaWall de padrões e
-                                comportamentos de
-                                ataques captados por nós e a origem dos mesmos
-                            </p>
+                            <h4><?=$lang['index-text-12'];?></h4>
+                            <p><?=$lang['index-text-13'];?></p>
                         </div>
                     </div>
                 </div>
@@ -188,16 +155,8 @@ session_start();
                         <i class="fa-solid fa-triangle-exclamation"></i>
                         </div>
                         <div class="detail-box">
-                            <h4>
-                                Sensore Mode
-                            </h4>
-                            <p>
-                                Os sensores da InnovaWall estão sempre à procura de ataques que possam tentar
-                                interromper a
-                                disponibilidade do seu website. Toda a detenção é realizada em menos de meio segundo, em
-                                média. Pronto
-                                para proteger o seu website!
-                            </p>
+                            <h4><?=$lang['index-text-14'];?></h4>
+                            <p><?=$lang['index-text-15'];?></p>
                         </div>
                     </div>
                 </div>
@@ -207,13 +166,8 @@ session_start();
                         <i class="fa-solid fa-fingerprint"></i>
                         </div>
                         <div class="detail-box">
-                            <h4>
-                                Managed Challenge
-                            </h4>
-                            <p>
-                                Um desafio de interação humana, usado em caso de emergência ou em caso de muitos pedidos
-                                por segundo a 'dar a volta' às nossas primeiras camadas.
-                            </p>
+                            <h4><?=$lang['index-text-16'];?></h4>
+                            <p><?=$lang['index-text-17'];?></p>
                         </div>
                     </div>
                 </div>
@@ -223,14 +177,8 @@ session_start();
                         <i class="fa-solid fa-robot"></i>
                         </div>
                         <div class="detail-box">
-                            <h4>
-                                Bot Detection
-                            </h4>
-                            <p>
-                                Capacidade de detectar robôs em tempo real sem a necessidade de desafios ou qualquer
-                                tipo de software
-                                com interação humana.
-                            </p>
+                            <h4><?=$lang['index-text-18'];?></h4>
+                            <p><?=$lang['index-text-19'];?></p>
                         </div>
                     </div>
                 </div>
@@ -240,14 +188,8 @@ session_start();
                         <i class="fa-solid fa-hat-cowboy"></i>
                         </div>
                         <div class="detail-box">
-                            <h4>
-                                Manipulation Detection
-                            </h4>
-                            <p>
-                                Detectar robôs ou humanos que estejam a mentir sobre os seus recursos ou hardware, ou a
-                                tentar manipular
-                                as suas informações.
-                            </p>
+                            <h4><?=$lang['index-text-20'];?></h4>
+                            <p><?=$lang['index-text-21'];?></p>
                         </div>
                     </div>
                 </div>

@@ -1,6 +1,4 @@
 <?php
-// Remover session_start() do header.php
-// session_start(); // Inicia a sessão, se ainda não estiver iniciada
 
 // Contar o número de produtos no carrinho
 $cart_count = 0;
@@ -10,17 +8,18 @@ if (isset($_SESSION['cart'])) {
         $cart_count += $item['quantity'];
     }
 }
+
+
 ?>
 
 <header class="header_section d-flex flex-wrap justify-content-center">
-  <div class="container">
+  <div class="container-full">
     <nav class="navbar navbar-expand-lg custom_nav-container">
       <a class="navbar-brand" href="index.php">
         <img src="../assets/images/logo.png" alt="" style="width: 180px; height: auto;">
       </a>
 
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class=""> </span>
       </button>
 
@@ -50,6 +49,19 @@ if (isset($_SESSION['cart'])) {
               Carrinho
             </a>
           </li>
+          <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item dropdown">
+                <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                <img style="width: 32px; height: auto;" src="assets/images/flags/pt.svg" alt="<?=$lang['lang-pt'];?>"><?=$lang['lang-pt'];?></a>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                  <li><a class="nav-link" href="index.php?la=pt"><img style="width: 32px; height: auto;" src="assets/images/flags/pt.svg" alt="<?=$lang['lang-pt'];?>"><?=$lang['lang-pt'];?></a></li>
+                  <li><a class="nav-link" href="index.php?la=en"><img style="width: 32px; height: auto;" src="assets/images/flags/en.svg" alt="<?=$lang['lang-en'];?>"><?=$lang['lang-en'];?></a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
         </ul>
         <div class="quote_btn-container">
           <!-- Mostra o link de login ou o nome de usuário dependendo do estado da sessão -->
