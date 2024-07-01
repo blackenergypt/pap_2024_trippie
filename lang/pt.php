@@ -8,7 +8,6 @@
     //index 
     $lang['index-title'] = 'Página Principal - InnovaWall';
 
-
     $lang['index-text-1'] = 'A Segurança que não sabias que precisavas';
     $lang['index-text-2'] = 'A InnovaWall é uma rede de distribuição de informação que permite fornecer conteúdo Web projetada para proteger redes com uma solução de mitigação automatizada de última geração desenvolvida internamente que visa ser segura, privada, rápida e confiável, com o objetivo de proteger serviços contra qualquer ataque cibernético.';
     $lang['index-text-3'] = 'A Proteção que não sabias que precisavas';

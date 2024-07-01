@@ -5,7 +5,7 @@ session_start(); // Iniciar a sessão para armazenar os dados do carrinho
 include 'includes/core.php';
 
 // Include language file based on the session or default to 'pt'
-$lang = isset($_SESSION['lang']) ? $_SESSION['lang'] : 'en';
+$lang = isset($_SESSION['lang']) ? $_SESSION['lang'] : 'pt';
 switch ($lang) {
     case 'en':
         include 'lang/en.php';
