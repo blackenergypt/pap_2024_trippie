@@ -66,7 +66,7 @@ include 'includes/core.php';
                                     <div class="row">
                                         <div class=" col-lg-10 mx-auto">
                                             <div class="img-box">
-                                                <img src="assets/images/secure-security.webp" alt="">
+                                                <img src="assets/images/encryption.svg" alt="">
                                             </div>
                                         </div>
                                     </div>
@@ -89,7 +89,7 @@ include 'includes/core.php';
                                     <div class="row">
                                         <div class=" col-lg-10 mx-auto">
                                             <div class="img-box">
-                                                <img src="assets/images/secure-security.webp" alt="">
+                                                <img src="assets/images/encryption.svg" alt="">
                                             </div>
                                         </div>
                                     </div>
@@ -111,7 +111,7 @@ include 'includes/core.php';
                                     <div class="row">
                                         <div class=" col-lg-10 mx-auto">
                                             <div class="img-box">
-                                                <img src="assets/images/secure-security.webp" alt="">
+                                                <img src="assets/images/encryption.svg" alt="">
                                             </div>
                                         </div>
                                     </div>
