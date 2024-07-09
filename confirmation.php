@@ -56,30 +56,69 @@ $stmt_items->close();
 
     <?php include 'includes/head.php'; ?>
     <style>
-        .confirmation_section {
-            padding: 20px;
-        }
-        .confirmation_section h2, .confirmation_section h3 {
-            text-align: center;
-            color: #333;
-        }
-        .confirmation_section p {
-            text-align: center;
-            color: #666;
-        }
-        .confirmation_section strong {
-            color: #333;
-        }
-        .confirmation_section ul {
-            list-style: none;
-            padding: 0;
-            margin-top: 10px;
-        }
-        .confirmation_section li {
-            margin-bottom: 10px;
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 10px;
-        }
+.confirmation_section {
+    padding: 40px 0;
+    color: white;
+    text-align: center;
+    background-image: url('assets/images/bg.jpeg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.confirmation_section .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 10px;
+
+
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 10px !important;
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+
+.confirmation_section h2,
+.confirmation_section h3 {
+    font-family: 'Arial', sans-serif;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.confirmation_section h2 {
+    font-size: 2em;
+    font-weight: bold;
+    margin-top: 0;
+}
+
+.confirmation_section h3 {
+    font-size: 1.5em;
+    font-weight: normal;
+}
+
+.confirmation_section p {
+    font-family: 'Arial', sans-serif;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.confirmation_section ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    text-align: left;
+}
+
+.confirmation_section ul li {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+}
     </style>
 </head>
 
@@ -89,13 +128,13 @@ $stmt_items->close();
         <?php include 'includes/header.php'; ?>
     </div>
 
-    <section class="confirmation_section layout_padding">
+    <section class="confirmation_section layout_padding" style="background-image: url(assets/images/bg.jpeg); background-position: center; background-repeat: no-repeat; background-size: cover;">
         <div class="container">
-            <h2>Confirmação de Pedido</h2>
-            <p>O seu pedido número <?php echo htmlspecialchars($order['id']); ?> foi realizado com sucesso.</p>
-            <h3>Detalhes do Pedido:</h3>
-            <p><strong>Total do Pedido:</strong> <?php echo number_format($order['total_amount'], 2, ',', '.'); ?> €</p>
-            <h3>Itens do Pedido:</h3>
+            <h2><?=$lang['confirmation-text-1'];?></h2>
+            <p><?=$lang['confirmation-text-2'];?> <?php echo htmlspecialchars($order['id']); ?> <?=$lang['confirmation-text-3'];?></p>
+            <h3><?=$lang['confirmation-text-4'];?></h3>
+            <p><strong><?=$lang['confirmation-text-5'];?>:</strong> <?php echo number_format($order['total_amount'], 2, ',', '.'); ?> €</p>
+            <h3><?=$lang['confirmation-text-6'];?></h3>
             <ul>
                 <?php while ($item = $result_items->fetch_assoc()): ?>
                     <li><?php echo htmlspecialchars($item['name']); ?> - <?php echo htmlspecialchars($item['quantity']); ?> x € <?php echo number_format($item['price'], 2, ',', '.'); ?></li>

@@ -26,6 +26,10 @@ if (isset($_SESSION['cart'])) {
       padding-left: 25px;
       background-color: rgba(255, 255, 255, 0.1) !important;
     }
+    .quote_btn-container a {
+  color: #ffffff;
+  text-transform: math-auto!important;
+}
   </style>
 
 <header class="header_section d-flex flex-wrap justify-content-center" style="    background-image: url(assets/images/bg.jpeg) !important;
@@ -73,10 +77,12 @@ if (isset($_SESSION['cart'])) {
         <div class="quote_btn-container">
           <!-- Mostra o link de login ou o nome de usuário dependendo do estado da sessão -->
           <?php if (!isset($_SESSION['username'])) : ?>
+            <div style="padding-left: 15px;">
             <a href="sign-in.php">
               <i class="fas fa-user"></i>
               <span><?=$lang['nav-text-7'];?></span>
             </a>
+            </div>
           <?php else : ?>
             <a href="dashboard.php">
               <i class="fas fa-user"></i>
@@ -85,18 +91,17 @@ if (isset($_SESSION['cart'])) {
           <?php endif; ?>
         </div>
         <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
-            <ul class="navbar-nav">
-              <li class="nav-item dropdown">
-                <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: transparent; border: none; color: white;">
-                <img style="width: 20px; height: auto; margin-right: 5px;" src="assets/images/flags/pt.svg" alt="<?=$lang['lang-pt'];?>"><?=$lang['lang-pt'];?></a>
-                </button>
+        <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+                <button id="flagButton" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: transparent; border: none; color: white;">
+                    <img style="width: 20px; height: auto; margin-right: 5px;" src="assets/images/flags/pt.svg" alt="<?=$lang['lang-pt'];?>"><span><?=$lang['lang-pt'];?></span></button>
                 <ul class="dropdown-menu dropdown-menu-dark">
-                  <li><a class="nav-link" href="index.php?la=pt"><img style="width: 20px; height: auto; margin-right: 5px;" src="assets/images/flags/pt.svg" alt="<?=$lang['lang-pt'];?>"><?=$lang['lang-pt'];?></a></li>
-                  <li><a class="nav-link" href="index.php?la=en"><img style="width: 20px; height: auto; margin-right: 5px;" src="assets/images/flags/en.svg" alt="<?=$lang['lang-en'];?>"><?=$lang['lang-en'];?></a></li>
+                    <li><a class="nav-link" href="index.php?la=pt" onclick="changeFlag('pt')"><img style="width: 20px; height: auto; margin-right: 5px;" src="assets/images/flags/pt.svg" alt="<?=$lang['lang-pt'];?>"><?=$lang['lang-pt'];?></a></li>
+                    <li><a class="nav-link" href="index.php?la=en" onclick="changeFlag('en')"><img style="width: 20px; height: auto; margin-right: 5px;" src="assets/images/flags/en.svg" alt="<?=$lang['lang-en'];?>"><?=$lang['lang-en'];?></a></li>
                 </ul>
-              </li>
-            </ul>
-          </div>
+            </li>
+        </ul>
+    </div>
       </div>
     </nav>
   </div>

@@ -78,7 +78,7 @@ include 'includes/core.php';
         <?php include 'includes/header.php';?>
     </div>
 
-    <section class="contact_section layout_padding" style="background-image: url(assets/images/bg.jpeg); background-position: center; background-repeat: no-repeat; background-size: cover;">>
+    <section class="contact_section layout_padding" style="background-image: url(assets/images/bg.jpeg); background-position: center; background-repeat: no-repeat; background-size: cover;">
         <div class="container">
             <div class="heading_container heading_center">
                 <h2 class="text-white"><?=$lang['contact-text-1'];?></h2>

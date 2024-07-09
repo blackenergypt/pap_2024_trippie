@@ -154,19 +154,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             padding: 10px;
             margin-top: 5px;
         }
+
         .checkout_section button {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            margin-top: 20px;
-            cursor: pointer;
-        }
-        .checkout_section button:hover {
-            background-color: #0056b3;
-        }
+        display: inline-block;
+        padding: 10px 35px;
+        color: #ffffff;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        transition: all .3s;
+        border: none;
+        border-radius: 10px !important;
+        background-color: rgba(255, 255, 255, 0.1) !important;
+        width: 100%;
+        margin-top: 20px;
+        cursor: pointer;
+    }
+    .checkout_section button:hover {
+        background-color: transparente;
+        color: #ffffff;
+    }
+    .checkout_section button:hover {
+        background-color: rgba(255, 255, 255, 0.2) !important;
+        color: #ffffff;
+    }
     </style>
 </head>
 <body class="sub_page">
@@ -175,24 +184,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
 
     <section class="checkout_section layout_padding" style="background-image: url(assets/images/bg.jpeg); background-position: center; background-repeat: no-repeat; background-size: cover;">
-        <div class="container" style="  background-color: rgba(255, 255, 255, 0.1);   padding: 20px;
-  border-radius: 10px; padding: 40px;
-    max-width: 600px;">
-            <h2>Checkout</h2>
+        <div class="container" style="background-color: rgba(255, 255, 255, 0.1);   padding: 20px; border-radius: 10px; padding: 40px; max-width: 600px;">
+            <h2 class="text-white"><?=$lang['checkout-text-1'];?></h2>
             <form method="post">
-                <label for="fname">Nome:</label>
+                <label style="color:#ffffff" for="fname"><?=$lang['checkout-text-2'];?>:</label>
                 <input type="text" id="fname" name="fname" required><br><br>
-                <label for="lname">Sobrenome:</label>
+                <label style="color:#ffffff" for="lname"><?=$lang['checkout-text-3'];?>:</label>
                 <input type="text" id="lname" name="lname" required><br><br>
-                <label for="email">Email:</label>
+                <label style="color:#ffffff" for="email"><?=$lang['checkout-text-4'];?>:</label>
                 <input type="email" id="email" name="email" required><br><br>
-                <label for="address">Endereço:</label>
+                <label style="color:#ffffff" for="address"><?=$lang['checkout-text-5'];?>:</label>
                 <input type="text" id="address" name="address" required><br><br>
-                <label for="city">Cidade:</label>
+                <label style="color:#ffffff" for="city"><?=$lang['checkout-text-6'];?>:</label>
                 <input type="text" id="city" name="city" required><br><br>
-                <label for="zip">Código Postal:</label>
+                <label style="color:#ffffff" for="zip"><?=$lang['checkout-text-7'];?>:</label>
                 <input type="text" id="zip" name="zip" required><br><br>
-                <button type="submit">Finalizar Pedido</button>
+                <button type="submit"><?=$lang['checkout-text-8'];?></button>
             </form>
         </div>
     </section>

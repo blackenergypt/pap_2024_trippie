@@ -319,7 +319,7 @@ a:focus {
 
 .quote_btn-container a {
   color: #ffffff;
-  text-transform: uppercase;
+  text-transform: math-auto!important;
 }
 
 .quote_btn-container a span {

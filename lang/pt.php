@@ -75,7 +75,7 @@
     $lang['price-text-20'] = 'Ocorreu um erro ao adicionar o produto ao carrinho.';
 
     //contact
-    $lang['contact-text-1'] = 'Entre em Contato Connosco';
+    $lang['contact-text-1'] = 'Entre em Contacto Connosco';
     $lang['contact-text-2'] = 'Nome';
     $lang['contact-text-3'] = 'Apelido';
     $lang['contact-text-4'] = 'Email';
@@ -123,16 +123,40 @@
    $lang['verify-text-1'] = 'Redirecionando em 5 segundos';
 
    //register
-   $lang['register-text-1'] = 'Registre-se';
+   $lang['register-text-1'] = 'Registe-se';
    $lang['register-text-2'] = 'Primeiro Nome';
    $lang['register-text-3'] = 'Último Nome';
-   $lang['register-text-4'] = 'Nome de Usuário';
+   $lang['register-text-4'] = 'Nome de Utilizador';
    $lang['register-text-5'] = 'Introduza o seu email';
    $lang['register-text-6'] = 'Introduza a sua senha';
    $lang['register-text-7'] = 'Confirme a sua senha';
-   $lang['register-text-8'] = 'Registrar';
-   $lang['register-text-9'] = 'Ainda não fazer o login? Login';
+   $lang['register-text-8'] = 'Registar';
+   $lang['register-text-9'] = 'Ainda não fez o login? Login';
    
+   //checkout
+   $lang['checkout-text-1'] = 'Checkout';
+   $lang['checkout-text-2'] = 'Nome';
+   $lang['checkout-text-3'] = 'Sobrenome';
+   $lang['checkout-text-4'] = 'Email';
+   $lang['checkout-text-5'] = 'Endereço';
+   $lang['checkout-text-6'] = 'Cidade';
+   $lang['checkout-text-7'] = 'Código Postal';
+   $lang['checkout-text-8'] = 'Finalizar Pedido';
+
+   //confirmation
+   $lang['confirmation-text-1'] = 'Confirmação de Pedido';
+   $lang['confirmation-text-2'] = 'O seu pedido número';
+   $lang['confirmation-text-3'] = 'foi realizado com sucesso.';
+   $lang['confirmation-text-4'] = 'Detalhes do Pedido:';
+   $lang['confirmation-text-5'] = 'Total do Pedido';
+   $lang['confirmation-text-5'] = 'Itens do Pedido:';
+
+   //dashboard
+   $lang['dashboard-text-1'] = 'Dashboard';
+
+   //dashboard sidebar
+   $lang['dash-sidebar-text-1'] = 'Bem-vindo à Área de Cliente,';
+
    //fetch contacts
-   $lang['fetch_contacts-text-1'] = 'Nenhum contato encontrado.';
+   $lang['fetch_contacts-text-1'] = 'Nenhum contacto encontrado.';
 ?>

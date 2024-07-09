@@ -20,11 +20,7 @@ include 'includes/core.php';
 </head>
 <style>
 
-   /* mudar a cor da barra de scroll*/
-      * {
-    scrollbar-width: thin;
-    scrollbar-color: #455561 #273049;
-}
+
     .hero_area {
     background-image: url(assets/images/bg.jpeg) !important;
     background-position: center!important;

@@ -69,7 +69,7 @@ $conn->close();
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">Visualizar Contato</h1>
                     <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="admin_dashboard.php">Dashboard</a></li>
                         <li class="breadcrumb-item active">Visualizar Contato</li>
                     </ol>
 
@@ -99,7 +99,7 @@ $conn->close();
                                 <label class="form-label">Data de Criação:</label>
                                 <input type="text" class="form-control" value="<?php echo $created_at; ?>" readonly>
                             </div>
-                            <a href="dashboard.php" class="btn btn-secondary">Voltar</a>
+                            <a href="admin_dashboard.php" class="btn btn-secondary">Voltar</a>
                         </div>
                     </div>
                 </div>
