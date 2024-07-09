@@ -1,5 +1,5 @@
 <?php
-
+include 'includes/core.php';
 require 'config.php';
 // Conexão com o banco de dados
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -33,7 +33,10 @@ if ($result->num_rows > 0) {
     
     echo "</tbody></table>";
 } else {
-    echo "<p>Nenhum contato encontrado.</p>";
+    // Saia do modo PHP para usar a sintaxe curta para impressão
+    ?>
+    <p><?=$lang['fetch_contacts-text-1'];?></p>
+    <?php
 }
 
 // Fecha a conexão com o banco de dados

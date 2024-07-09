@@ -1,7 +1,7 @@
 <?php
 // Iniciar a sessão para armazenar os dados do carrinho
 session_start();
-
+include 'includes/core.php';
 // Incluir o ficheiro de conexão com a base de dados
 require_once('db_connect.php');
 

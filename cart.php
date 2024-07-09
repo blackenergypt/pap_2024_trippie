@@ -1,10 +1,11 @@
 <?php
 session_start(); // Inicia a sessão, se ainda não estiver iniciada
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
+ini_set('display_errors', 0);
+ini_set('display_startup_errors', 0);
 error_reporting(E_ALL);
-
+// Include core files
+include 'includes/core.php';
 include_once 'db_connect.php';
 
 // Inicializar o carrinho se ainda não estiver inicializado na sessão
@@ -12,7 +13,7 @@ if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [];
 }
 
-$response = ['success' => false, 'message' => 'Ação não realizada.'];
+$response = ['success' => false, 'message' => $lang['card-text-10']];
 
 // Adicionar produto ao carrinho
 if (isset($_POST['product_id']) && is_numeric($_POST['product_id'])) {
@@ -36,9 +37,9 @@ if (isset($_POST['product_id']) && is_numeric($_POST['product_id'])) {
                 'quantity' => 1
             ];
         }
-        $response = ['success' => true, 'message' => 'Produto adicionado ao carrinho.'];
+        $response = ['success' => true, 'message' => $lang['card-text-11']];
     } else {
-        $response = ['success' => false, 'message' => 'Produto não encontrado.'];
+        $response = ['success' => false, 'message' => $lang['card-text-12']];
     }
     $stmt->close();
 }
@@ -48,9 +49,9 @@ if (isset($_POST['remove_product_id']) && is_numeric($_POST['remove_product_id']
     $remove_product_id = intval($_POST['remove_product_id']);
     if (isset($_SESSION['cart'][$remove_product_id])) {
         unset($_SESSION['cart'][$remove_product_id]);
-        $response = ['success' => true, 'message' => 'Produto removido do carrinho.'];
+        $response = ['success' => true, 'message' => $lang['card-text-13']];
     } else {
-        $response = ['success' => false, 'message' => 'Produto não encontrado no carrinho.'];
+        $response = ['success' => false, 'message' => $lang['card-text-14']];
     }
 }
 
@@ -93,17 +94,17 @@ if (!empty($_POST)) {
     </div>
     <section class="cart_section layout_padding" style="background-image: url(assets/images/bg.jpeg); background-position: center; background-repeat: no-repeat; background-size: cover;">
         <div id="order-standard_cart" class="container text-white">
-            <h2>O Seu Carrinho de Compras</h2>
-            <h6>Revisão e checkout</h6>
+            <h2><?=$lang['card-text-1'];?></h2>
+            <h6><?=$lang['card-text-2'];?></h6>
             <div class="cart_items">
                 <?php if (!empty($_SESSION['cart'])): ?>
                     <table>
                         <thead>
                             <tr>
-                                <th>Produto</th>
-                                <th>Quantidade</th>
-                                <th>Preço Total</th>
-                                <th>Ação</th>
+                                <th><?=$lang['card-text-3'];?></th>
+                                <th><?=$lang['card-text-4'];?></th>
+                                <th><?=$lang['card-text-5'];?></th>
+                                <th><?=$lang['card-text-6'];?></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -115,7 +116,7 @@ if (!empty($_POST)) {
                                     <td class="actions">
                                         <form method="post" class="remove-form">
                                             <input type="hidden" name="remove_product_id" value="<?php echo htmlspecialchars($product_id); ?>">
-                                            <button type="submit">Remover</button>
+                                            <button type="submit"><?=$lang['card-text-7'];?></button>
                                         </form>
                                     </td>
                                 </tr>
@@ -128,11 +129,11 @@ if (!empty($_POST)) {
                     </table>
                     <div class="checkout_btn" style="justify-content: end!important;">
                         <form method="post" action="cart.php">
-                            <button type="submit" name="checkout_submit">Finalizar Compra</button>
+                            <button type="submit" name="checkout_submit"><?=$lang['card-text-8'];?></button>
                         </form>
                     </div>
                 <?php else: ?>
-                    <p class="empty_cart">O seu carrinho está vazio.</p>
+                    <p class="empty_cart"><?=$lang['card-text-9'];?></p>
                 <?php endif; ?>
             </div>
         </div>

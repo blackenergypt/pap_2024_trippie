@@ -1,3 +1,8 @@
+
+<?php
+include 'includes/core.php';
+?>
+
 <!DOCTYPE html>
 <html lang="pt-pt">
 
@@ -16,13 +21,13 @@
             <div class="logo">
                 <img src="assets/images/lock.png" alt="InnovaWall Logo">
             </div>
-            <h2>Recuperação de Senha</h2>
+            <h2><?=$lang['forgot_password-text-1'];?></h2>
             <form action="process_forgot_password.php" method="post">
                 <div class="textbox">
                     <i class="fas fa-envelope"></i>
-                    <input type="email" placeholder="Introduza o seu email" name="email" required><br>
+                    <input type="email" placeholder="<?=$lang['forgot_password-text-2'];?>" name="email" required><br>
                 </div>
-                <button type="submit" class="btn">Recuperar Senha</button>
+                <button type="submit" class="btn"><?=$lang['forgot_password-text-3'];?></button>
             </form>
         </div>
     </div>

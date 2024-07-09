@@ -3,18 +3,6 @@ session_start(); // Iniciar a sessão para armazenar os dados do carrinho
 
 // Include core files
 include 'includes/core.php';
-
-// Include language file based on the session or default to 'pt'
-$lang = isset($_SESSION['lang']) ? $_SESSION['lang'] : 'pt';
-switch ($lang) {
-    case 'en':
-        include 'lang/en.php';
-        break;
-    default:
-        include 'lang/pt.php';
-        break;
-}
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-pt">
@@ -30,7 +18,39 @@ switch ($lang) {
     <title><?php echo $lang['index-title'];?></title>
     <?php include 'includes/head.php'; ?>
 </head>
+<style>
 
+   /* mudar a cor da barra de scroll*/
+      * {
+    scrollbar-width: thin;
+    scrollbar-color: #455561 #273049;
+}
+    .hero_area {
+    background-image: url(assets/images/bg.jpeg) !important;
+    background-position: center!important;
+    background-repeat: no-repeat!important;
+    background-size: cover!important;
+    background-color: transparent!important;
+    position: relative!important;
+    left: 0px!important;
+    top: 0px!important;
+    width: 100%!important;
+    height: 100%!important;
+    z-index: 999!important;
+
+    min-height: 100vh!important;
+    display: -webkit-box!important;
+    display: -ms-flexbox!important;
+    display: flex!important;
+    -webkit-box-orient: vertical!important;
+    -webkit-box-direction: normal!important;
+    -ms-flex-direction: column!important;
+    flex-direction: column!important;
+}
+.slider_section .carousel_btn-box {
+    display: none !important;
+}
+</style>
 <body>
     <div class="hero_area">
         <?php include 'includes/header.php'; ?>
@@ -43,14 +63,14 @@ switch ($lang) {
                                 <div class="col-md-6">
                                     <div class="detail-box text-center">
                                         <h1><?=$lang['index-text-1'];?></h1>
-                                        <p><?=$lang['index-text-2'];?></p>
+                                        <p style="font-style: italic; color: #999;"><?=$lang['index-text-2'];?></p>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="row">
                                         <div class=" col-lg-10 mx-auto">
                                             <div class="img-box">
-                                                <img src="https://i.imgur.com/3ZZQUqf.png" alt="">
+                                                <img src="assets/images/secure-security.webp" alt="">
                                             </div>
                                         </div>
                                     </div>
@@ -65,7 +85,7 @@ switch ($lang) {
                                 <div class="col-md-6">
                                     <div class="detail-box text-center">
                                         <h1><?=$lang['index-text-3'];?></h1>
-                                        <p><?=$lang['index-text-4'];?></p>
+                                        <p style="font-style: italic; color: #999;"><?=$lang['index-text-4'];?></p>
 
                                     </div>
                                 </div>
@@ -73,7 +93,7 @@ switch ($lang) {
                                     <div class="row">
                                         <div class=" col-lg-10 mx-auto">
                                             <div class="img-box">
-                                                <img src="https://i.imgur.com/3ZZQUqf.png" alt="">
+                                                <img src="assets/images/secure-security.webp" alt="">
                                             </div>
                                         </div>
                                     </div>
@@ -88,14 +108,14 @@ switch ($lang) {
                                 <div class="col-md-6">
                                     <div class="detail-box text-center">
                                         <h1><?=$lang['index-text-5'];?></h1>
-                                        <p><?=$lang['index-text-6'];?></p>
+                                        <p style="font-style: italic; color: #999;"><?=$lang['index-text-6'];?></p>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="row">
                                         <div class=" col-lg-10 mx-auto">
                                             <div class="img-box">
-                                                <img src="https://i.imgur.com/3ZZQUqf.png" alt="">
+                                                <img src="assets/images/secure-security.webp" alt="">
                                             </div>
                                         </div>
                                     </div>
@@ -118,11 +138,10 @@ switch ($lang) {
             </div>
         </section>
     </div>
-
-    <section class="service_section layout_padding">
+    <section class="service_section layout_padding" style="background-image: url(assets/images/bg.jpeg); background-position: center; background-repeat: no-repeat; background-size: cover;">
         <div class="container">
             <div class="heading_container heading_center">
-                <h2><?=$lang['index-text-9'];?></h2>
+                <h2 class="text-white"><?=$lang['index-text-9'];?></h2>
             </div>
         </div>
         <div class="container ">
@@ -134,7 +153,7 @@ switch ($lang) {
                         </div>
                         <div class="detail-box">
                             <h4><?=$lang['index-text-10'];?></h4>
-                            <p><?=$lang['index-text-11'];?></p>
+                            <p style="font-style: italic; color: #999;"><?=$lang['index-text-11'];?></p>
                         </div>
                     </div>
                 </div>
@@ -145,7 +164,7 @@ switch ($lang) {
                         </div>
                         <div class="detail-box">
                             <h4><?=$lang['index-text-12'];?></h4>
-                            <p><?=$lang['index-text-13'];?></p>
+                            <p style="font-style: italic; color: #999;"><?=$lang['index-text-13'];?></p>
                         </div>
                     </div>
                 </div>
@@ -156,7 +175,7 @@ switch ($lang) {
                         </div>
                         <div class="detail-box">
                             <h4><?=$lang['index-text-14'];?></h4>
-                            <p><?=$lang['index-text-15'];?></p>
+                            <p style="font-style: italic; color: #999;"><?=$lang['index-text-15'];?></p>
                         </div>
                     </div>
                 </div>
@@ -167,7 +186,7 @@ switch ($lang) {
                         </div>
                         <div class="detail-box">
                             <h4><?=$lang['index-text-16'];?></h4>
-                            <p><?=$lang['index-text-17'];?></p>
+                            <p style="font-style: italic; color: #999;"><?=$lang['index-text-17'];?></p>
                         </div>
                     </div>
                 </div>
@@ -178,7 +197,7 @@ switch ($lang) {
                         </div>
                         <div class="detail-box">
                             <h4><?=$lang['index-text-18'];?></h4>
-                            <p><?=$lang['index-text-19'];?></p>
+                            <p style="font-style: italic; color: #999;"><?=$lang['index-text-19'];?></p>
                         </div>
                     </div>
                 </div>
@@ -189,7 +208,7 @@ switch ($lang) {
                         </div>
                         <div class="detail-box">
                             <h4><?=$lang['index-text-20'];?></h4>
-                            <p><?=$lang['index-text-21'];?></p>
+                            <p style="font-style: italic; color: #999;"><?=$lang['index-text-21'];?></p>
                         </div>
                     </div>
                 </div>

@@ -1,7 +1,8 @@
 <?php
 // Iniciar a sessão para armazenar os dados do carrinho
 session_start();
-
+// Include core files
+include 'includes/core.php';
 ?>
 <!DOCTYPE html>
 <html lang="pt-pt">
@@ -18,10 +19,7 @@ session_start();
     <?php include 'includes/head.php'; ?>
 
     <style>
-        .about_section {
-            padding: 50px 0;
-            background-color: #011627; /* Cor de fundo da seção */
-        }
+
         .about_section .container {
             display: flex;
             align-items: center;
@@ -46,8 +44,9 @@ session_start();
             color: #00a8e8; /* Cor do título */
         }
         .about_section .detail-box p {
-            font-size: 18px;
-            line-height: 1.6;
+  
+            font-style: italic;
+            color: #999;
         }
         .about_section .detail-box a {
             display: inline-block;
@@ -79,30 +78,18 @@ session_start();
         <?php include 'includes/header.php';?>
     </div>
 
-    <section class="about_section layout_padding">
+    <section class="about_section layout_padding" style="background-image: url(assets/images/bg.jpeg); background-position: center; background-repeat: no-repeat; background-size: cover;">
         <div class="container">
             <div class="img-box">
                 <img src="assets/images/about-img.png" alt="Imagem ilustrativa sobre a InnovaWall">
             </div>
             <div class="detail-box">
                 <div class="heading_container">
-                    <h2>Quem somos?</h2>
+                    <h2 class="text-white"><?=$lang['about-text-1'];?></h2>
                 </div>
-                <p>
-                    Somos uma equipa que quer ajudar a construir uma Internet melhor, mais rápida e mais segura. 
-                    Acreditamos que, com as nossas ações, conhecimento e tecnologia, conseguimos evitar que alguns dos 
-                    maiores problemas da Internet aconteçam, como ataques cibernéticos.
-                </p>
-                <p>
-                    A InnovaWall é uma empresa de rede de fornecimento de conteúdo voltada para a segurança online, 
-                    com foco na proteção de DDoS e WAF (Web Application Firewall).
-                </p>
-                <p>
-                    Na InnovaWall, fazemos de tudo para tornar o mundo online mais seguro para quem o navega 
-                    impedindo qualquer tipo de ataques maliciosos, podemos dizer que somos inovadores, damos máxima 
-                    atenção a cada detalhe, e extremamente apaixonados pelo nosso trabalho e missão.
-                </p>
-
+                <p><?=$lang['about-text-2'];?></p>
+                <p><?=$lang['about-text-3'];?></p>
+                <p><?=$lang['about-text-4'];?></p>
             </div>
         </div>
     </section>

@@ -5,7 +5,8 @@ if (!isset($_SESSION['username'])) {
     header("Location: sign-in.php");
     exit();
 }
-
+// Include core files
+include 'includes/core.php';
 require 'config.php'; // Incluir o arquivo de configuração com as credenciais do banco de dados
 ?>
 

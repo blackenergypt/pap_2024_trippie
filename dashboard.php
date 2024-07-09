@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+include 'includes/core.php';
 if (!isset($_SESSION['username'])) {
     header("Location: sign-in.php");
     exit();

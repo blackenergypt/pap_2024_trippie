@@ -1,3 +1,6 @@
+<?php
+include 'includes/core.php';
+?>
 <!DOCTYPE html>
 <html lang="pt-pt">
 <head>
@@ -13,20 +16,20 @@
             <div class="logo">
                 <img src="assets/images/lock.png" alt="InnovaWall Logo">
             </div>
-            <h2>Login</h2>
+            <h2><?=$lang['login-text-1'];?></h2>
             <form action="process_login.php" method="post">    
                 <div class="textbox">
                     <i class="fas fa-envelope"></i>
-                    <input type="email" placeholder="Introduza o seu email" name="email" required>
+                    <input type="email" placeholder="<?=$lang['login-text-2'];?>" name="email" required>
                 </div>
                 <div class="textbox">
                     <i class="fas fa-lock"></i>
-                    <input type="password" placeholder="Introduza a sua password" name="password" required>
+                    <input type="password" placeholder="<?=$lang['login-text-3'];?>" name="password" required>
                 </div>
-                <button type="submit" class="btn">Login</button>
+                <button type="submit" class="btn"><?=$lang['login-text-4'];?></button>
                 <div class="links">
-                    <a href="forgot_password.php">Esqueceu a senha?</a>
-                    <a href="sign-up.php">Ainda não está registado? REGISTE-SE</a>
+                    <a href="forgot_password.php"><?=$lang['login-text-5'];?></a>
+                    <a href="sign-up.php"><?=$lang['login-text-6'];?></a>
                 </div>
             </form>
         </div>

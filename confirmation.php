@@ -5,7 +5,7 @@ ini_set('display_startup_errors', 0);
 error_reporting(E_ALL);
 
 include_once 'db_connect.php';
-
+include 'includes/core.php';
 // Verificar se o parâmetro order_id está presente na URL
 if (!isset($_GET['order_id'])) {
     echo "Erro: ID do pedido não fornecido.";

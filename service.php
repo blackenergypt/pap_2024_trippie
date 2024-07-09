@@ -2,7 +2,8 @@
 <?php
 // Iniciar a sessão para armazenar os dados do carrinho
 session_start();
-
+// Include core files
+include 'includes/core.php';
 ?>
 <!DOCTYPE html>
 <html lang="pt-pt">
@@ -28,12 +29,10 @@ session_start();
         <?php include 'includes/header.php';?>
     </div>
 
-    <section class="service_section layout_padding">
+    <section class="service_section layout_padding" style="background-image: url(assets/images/bg.jpeg); background-position: center; background-repeat: no-repeat; background-size: cover;">
         <div class="container">
             <div class="heading_container heading_center">
-                <h2>
-                    As nossas soluções de cibersegurança
-                </h2>
+                <h2 class="text-white"><?=$lang['index-text-9'];?></h2>
             </div>
         </div>
         <div class="container ">
@@ -44,14 +43,8 @@ session_start();
                         <i class="fa-solid fa-cube"></i>
                         </div>
                         <div class="detail-box">
-                            <h4>
-                                Deep Packet Inspection
-                            </h4>
-                            <p>
-                                Bloquear ataques cibernéticos ao simplesmente analisar os pacotes dos mesmos, sem a
-                                necessidade de
-                                interações humanas.
-                            </p>
+                            <h4><?=$lang['index-text-10'];?></h4>
+                            <p style="font-style: italic; color: #999;"><?=$lang['index-text-11'];?></p>
                         </div>
                     </div>
                 </div>
@@ -61,14 +54,8 @@ session_start();
                         <i class="fa-solid fa-database"></i>
                         </div>
                         <div class="detail-box">
-                            <h4>
-                                InnovaWall Database
-                            </h4>
-                            <p>
-                                Uma base de dados, que contem dados coletados pela equipa da InnovaWall de padrões e
-                                comportamentos de
-                                ataques captados por nós e a origem dos mesmos
-                            </p>
+                            <h4><?=$lang['index-text-12'];?></h4>
+                            <p style="font-style: italic; color: #999;"><?=$lang['index-text-13'];?></p>
                         </div>
                     </div>
                 </div>
@@ -78,16 +65,8 @@ session_start();
                         <i class="fa-solid fa-triangle-exclamation"></i>
                         </div>
                         <div class="detail-box">
-                            <h4>
-                                Sensore Mode
-                            </h4>
-                            <p>
-                                Os sensores da InnovaWall estão sempre à procura de ataques que possam tentar
-                                interromper a
-                                disponibilidade do seu website. Toda a detenção é realizada em menos de meio segundo, em
-                                média. Pronto
-                                para proteger o seu website!
-                            </p>
+                            <h4><?=$lang['index-text-14'];?></h4>
+                            <p style="font-style: italic; color: #999;"><?=$lang['index-text-15'];?></p>
                         </div>
                     </div>
                 </div>
@@ -97,13 +76,8 @@ session_start();
                         <i class="fa-solid fa-fingerprint"></i>
                         </div>
                         <div class="detail-box">
-                            <h4>
-                                Managed Challenge
-                            </h4>
-                            <p>
-                                Um desafio de interação humana, usado em caso de emergência ou em caso de muitos pedidos
-                                por segundo a 'dar a volta' às nossas primeiras camadas.
-                            </p>
+                            <h4><?=$lang['index-text-16'];?></h4>
+                            <p style="font-style: italic; color: #999;"><?=$lang['index-text-17'];?></p>
                         </div>
                     </div>
                 </div>
@@ -113,14 +87,8 @@ session_start();
                         <i class="fa-solid fa-robot"></i>
                         </div>
                         <div class="detail-box">
-                            <h4>
-                                Bot Detection
-                            </h4>
-                            <p>
-                                Capacidade de detectar robôs em tempo real sem a necessidade de desafios ou qualquer
-                                tipo de software
-                                com interação humana.
-                            </p>
+                            <h4><?=$lang['index-text-18'];?></h4>
+                            <p style="font-style: italic; color: #999;"><?=$lang['index-text-19'];?></p>
                         </div>
                     </div>
                 </div>
@@ -130,14 +98,8 @@ session_start();
                         <i class="fa-solid fa-hat-cowboy"></i>
                         </div>
                         <div class="detail-box">
-                            <h4>
-                                Manipulation Detection
-                            </h4>
-                            <p>
-                                Detectar robôs ou humanos que estejam a mentir sobre os seus recursos ou hardware, ou a
-                                tentar manipular
-                                as suas informações.
-                            </p>
+                            <h4><?=$lang['index-text-20'];?></h4>
+                            <p style="font-style: italic; color: #999;"><?=$lang['index-text-21'];?></p>
                         </div>
                     </div>
                 </div>

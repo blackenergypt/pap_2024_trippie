@@ -22,6 +22,8 @@ if ($conn->query($sql) === TRUE) {
 }
 
 $conn->close();
+
+include 'includes/core.php';
 ?>
 <!DOCTYPE html>
 <html lang="pt-pt">
@@ -45,7 +47,8 @@ $conn->close();
                 <img src="assets/images/user.png" alt="InnovaWall Logo">
             </div>
             <p><?php echo $message; ?></p>
-            <p>Redirecionando em 5 segundos...</p>
+            
+            <p><?=$lang['verify-text-1'];?>...</p>
         </div>
     </div>
 </body>
