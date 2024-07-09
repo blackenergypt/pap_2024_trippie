@@ -40,7 +40,7 @@ include 'includes/core.php';
         }, 5000); 
     </script>
 </head>
-<body>
+<body class="user-page" style="background-image: url(assets/images/bg.jpeg); background-position: center; background-repeat: no-repeat; background-size: cover;">
     <div class="login-container">
         <div class="login-box">
             <div class="logo">

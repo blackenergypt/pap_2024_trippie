@@ -10,7 +10,7 @@ include 'includes/core.php';
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body class="user-page">
+<body class="user-page" style="background-image: url(assets/images/bg.jpeg); background-position: center; background-repeat: no-repeat; background-size: cover;">
     <div class="login-container">
         <div class="login-box">
             <div class="logo">

@@ -8,7 +8,7 @@ include 'includes/core.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redefinir Senha</title>
 </head>
-<body>
+<body class="user-page" style="background-image: url(assets/images/bg.jpeg); background-position: center; background-repeat: no-repeat; background-size: cover;">
     <form action="process_reset_password.php" method="post">
         <input type="hidden" name="token" value="<?php echo $_GET['token']; ?>">
         

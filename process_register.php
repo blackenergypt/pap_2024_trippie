@@ -78,7 +78,7 @@ $conn->close();
         }, 5000); // 5000 milissegundos = 5 segundos
     </script>
 </head>
-<body>
+<body class="user-page" style="background-image: url(assets/images/bg.jpeg); background-position: center; background-repeat: no-repeat; background-size: cover;">
     <div class="login-container">
         <div class="login-box">
             <div class="logo">
