@@ -11,16 +11,16 @@ function sendRecoveryEmail($to, $subject, $message) {
     try {
         // Configurações do servidor SMTP
         $mail->isSMTP();
-        $mail->Host = 'mail.steveshop.pt'; // Substitua pelo seu servidor SMTP
+        $mail->Host = 'mail.devcode.pt'; // Substitua pelo seu servidor SMTP
         $mail->SMTPAuth = true;
-        $mail->Username = 'auth@steveshop.pt'; // Substitua pelo seu e-mail SMTP
-        $mail->Password = '2BwM57%hLIbvgI8l'; // Substitua pela sua senha SMTP
+        $mail->Username = 'auth@devcode.pt'; // Substitua pelo seu e-mail SMTP
+        $mail->Password = 'y6f1iazug7ulcHOt'; // Substitua pela sua senha SMTP
         $mail->SMTPSecure = false; // Sem criptografia
         $mail->SMTPAutoTLS = false; // Desativar TLS automático
         $mail->Port = 25; // Ou a porta correta do seu servidor SMTP
 
         // Configurações do e-mail
-        $mail->setFrom('noreply@steveshop.pt', 'InnovaWall');
+        $mail->setFrom('noreply@devcode.pt', 'InnovaWall');
         $mail->addAddress($to);
 
         // Conteúdo do e-mail

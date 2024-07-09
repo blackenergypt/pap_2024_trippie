@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `pap2024_pedro_sliva`
+-- Banco de dados: `pap2024`
 --
 
 -- --------------------------------------------------------
@@ -51,13 +51,6 @@ CREATE TABLE `orders` (
   `status` enum('pending','completed','cancelled') DEFAULT 'pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Despejando dados para a tabela `orders`
---
-
-INSERT INTO `orders` (`id`, `user_id`, `total_amount`, `created_at`, `status`) VALUES
-(1, 22, 20.00, '2024-06-29 14:43:41', 'pending');
-
 -- --------------------------------------------------------
 
 --
@@ -71,13 +64,6 @@ CREATE TABLE `order_items` (
   `quantity` int(11) NOT NULL,
   `price` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Despejando dados para a tabela `order_items`
---
-
-INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `quantity`, `price`) VALUES
-(1, 1, 1, 1, 20.00);
 
 -- --------------------------------------------------------
 
@@ -119,14 +105,6 @@ CREATE TABLE `users` (
   `verification_code` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Despejando dados para a tabela `users`
---
-
-INSERT INTO `users` (`id`, `first_name`, `last_name`, `username`, `password`, `email`, `email_verified`, `verification_code`, `created_at`) VALUES
-(21, 'Carlos', 'Sá', 'carlossa', '$2y$10$auY1O3nWMJvOgkNPrLqooelscs6p2d26MZ30HKqY6fKj44vNsWTlq', '174@aebatalha.ccems.pt', 1, '9869d98b9d2cfafd8b87fe182644af30', '2024-06-18 11:20:27'),
-(22, 'Bruno', 'Ribeiro', 'brunoribeiro', '$2y$10$LdxPjW8Yi7/NqC9I6oKsJOg/LtX3Xnl9VMRUiyJn7UcIr6RlCo6W.', 'brunoribeiro@devcode.pt', 1, '8f770b817310c90b171af2831777884e', '2024-06-29 13:59:50');
 
 --
 -- Índices para tabelas despejadas
@@ -174,31 +152,31 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de tabela `contacts`
 --
 ALTER TABLE `contacts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT de tabela `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT de tabela `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT de tabela `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- Restrições para tabelas despejadas
